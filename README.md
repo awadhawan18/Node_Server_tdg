@@ -1,5 +1,4 @@
-# tdg-web
-Responsive web for Traveld'Globe.Traveld'globe is a Web application where you can find your right travel destination. It is a platform for backpackers who want to explore things.
+# Node Application
 
 ```
 #!javascript
@@ -11,12 +10,12 @@ Rendering - Less
 
 ```
 
-This repository is to handle the web layer includes templating and response parsing from TDG'APi.
+This repository is to handle the web layer includes templating and response parsing from APi.
 
 ## Installation Steps ##
 1. Install latest stable version of node.js and npm.
 2. Clone the repository
 3. install global Grunt, 'npm install -g grunt-cli.
 4. Run 'npm install', let all the dependencies installed.
-6. Run 'grunt' and open localhost:3000/about in yopwur browser.
+6. Run 'grunt' and open localhost:3000/about in your browser.
 7. Code and Enjoy!
