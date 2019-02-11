@@ -1,0 +1,44 @@
+extends ../layouts/default
+
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').CORPORATE_TOURS.identifier
+  - showTrip = true
+  - showPlanner = true
+block css
+  style
+    include ../../public/resources/css/corporate.css
+
+block mainContent
+  .text-content.row
+    .content-wrapper
+      .col-sm-6
+        .static-header
+          h1.static-title There&rsquo;s a new way to travel
+          .subtitle Crafted Outdoor Trips for Team Bonding and Rejuvenation
+        div
+          a.btn.lg.brochure-button(href='#') Get Brochure
+        .quote
+          p End the burn out of your employees and team, so as to rejuvenate them
+            br
+            | and  bond them better on our camping and adventure trips. or more.
+        .endquote Looking for travel deals for your company?
+      .col-sm-6
+
+  .content-wrapper
+    .text-center
+      .fb-page(data-href="https://www.facebook.com/traveldglobe/" data-tabs="messages" data-width="400" data-height="300" data-small-header="true")
+        .fb-xfbml-parse-ignore
+    p Spread the love for travel
+      .fb-like(data-href="https://www.facebook.com/traveldglobe" data-layout="standard" data-action="like" data-show-faces="true" data-share="false")
+
+  div(id="fb-root")
+block js
+  script.
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1151322284897579";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));

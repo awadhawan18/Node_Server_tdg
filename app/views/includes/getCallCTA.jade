@@ -1,0 +1,20 @@
+.section.call-section
+   h4 Get a free call from our travel expert
+   form.js-validate-form.row
+      input(type="hidden" name="slug" value="#{req.originalUrl}" )
+      .col-sm-12.form-item
+         label
+            .row
+               .col-sm-3 Name
+                  span.mandatory *
+               .col-sm-9
+                  input.form-control(type="text" placeholder="Your name, please" name="username")
+      .col-sm-12.form-item
+         label
+            .row
+               .col-sm-3 Mobile
+                  span.mandatory *
+               .col-sm-9
+                  input.form-control(type="text" placeholder="10 digits to hear from us" name="phone" data-validate="phone" data-fieldType="phone")
+      .col-sm-12.text-right
+         button.btn.btn-primary.js-getCall.js-validate-submit Request a call

@@ -1,0 +1,155 @@
+@import url('../variables');
+@import '../mixins/allMixin';
+
+.itinerary {
+
+  text-align: right;
+  .day {
+    font-weight: 600;
+    text-align: left;
+    margin: @margin-large 0;
+  }
+  .timeline {
+    margin-bottom: @margin-large;
+    .connect {
+      display: inline-block;
+      border-top: 1px dotted fade(@pallet-theme,30%);
+      position: relative;
+      top: 10px;
+    }
+    .context {
+      font-weight: 600;
+      text-align: left;
+    }
+  }
+}
+
+form {
+  .form-item {
+    margin: @margin-medium 0;
+  }
+}
+
+label {
+  display: block;
+  font-weight: 400;
+}
+
+.shares {
+  display: block;
+  margin: @margin-medium 0;
+}
+.share-link {
+  background: darken(@pallet-background-secondary, 3%);
+  padding: 7px;
+  border-radius: 20px;
+  margin: 0 @margin-base;
+  transition: all 0.3s 0s ease-out;
+  display: inline-block;
+
+  &.facebook {
+    background: @social-color-facebook;
+    &:hover {
+      background: darken(@social-color-facebook, 5%);
+    }
+  }
+  &.twitter {
+    background: @social-color-twitter;
+    &:hover {
+      background: darken(@social-color-twitter, 5%);
+    }
+  }
+
+}
+
+.book-btn {
+  position: fixed;
+  z-index: @index-space;
+  box-shadow: 1px 1px 1px 1px @pallet-border-secondary;
+  bottom: 10px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  padding : 20px 15px;
+  border-radius: 100%;
+
+}
+
+.head.card {
+  margin-top: @margin-medium;
+
+  .trip-tags {
+
+  }
+}
+.gallery {
+  .img-cont {
+    margin-bottom: @margin-medium;
+  }
+}
+.price {
+  font-size: @font-large;
+  margin: @margin-base 0;
+  .offer {
+    color: @pallet-color-important;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: @margin-base;
+  }
+  .base-price {
+    text-decoration: line-through;
+    font-size: 0.8em;
+    display: inline-block;
+  }
+  small {
+    font-size: 0.7em;
+  }
+}
+
+.booking-form {
+  background: @pallet-background-secondary;
+  padding: @padding-large;
+  transition: all 0.3s 0s ease-out;
+
+  .caption {
+    margin-bottom: @margin-base;
+  }
+
+  .ticks {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    text-align: center;
+    background: @pallet-background-selected;
+    color: @pallet-color-light;
+    margin-right: @margin-base;
+    vertical-align: text-top;
+
+    &:after {
+      content: '\2713 ';
+      position: relative;
+      top: -3px;
+    }
+  }
+}
+.booking-card {
+  position: fixed;
+  bottom: 0;
+  lefT: 0;
+  right: 0;
+  z-index: 1;
+  background: darken(@pallet-background-secondary, 10%);
+  padding: @padding-medium @padding-large;
+
+  .price {
+    text-align: center;
+    margin: 0;
+    padding: @padding-base 0;
+    background: @pallet-background-primary;
+    border-radius: 5px;
+  }
+  .btn {
+    margin-top: @margin-base;
+  }
+}

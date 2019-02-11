@@ -1,0 +1,31 @@
+mixin metaDescription(result)
+  if(typeof result !== 'undefined')
+    meta( name="description" content="#{result}")
+
+mixin metaKeywords(result)
+  if(typeof result !== 'undefined')
+    meta( name="keywords" content="#{result}")
+
+mixin metaTitle(result)
+  if(typeof result !== 'undefined')
+    title(itemprop='name') #{result}
+
+mixin metaOG(seo_data, cannonical, author)
+  meta(property="fb:app_id" content="1151322284897579")
+  if author
+    meta(property="og:type" content="article")
+    meta(property="article:publisher" content="#{host}")
+    meta(property="article:author" content="#{host}/traveller/#{author.slug}")
+  else
+    meta(property="og:type" content="website")
+  meta(property="og:site_name" content="travel d'globe")
+  meta(property="og:title" content="#{seo_data.title}")
+  meta(property="og:description" content="#{seo_data.description}")
+  meta(property="og:image" content="#{seo_data.image_url}")
+  meta(property="og:locale" content="en_US")
+  meta(property="og:url" content="#{cannonical}")
+  meta(name="twitter:card" content="summary")
+  meta(name="twitter:site" content="@traveldglobe")
+  meta(name="twitter:title" content="#{seo_data.title}")
+  meta(name="twitter:description" content="#{seo_data.description}")
+  meta(name="twitter:image" content="#{seo_data.image_url}")

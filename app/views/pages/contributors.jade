@@ -1,0 +1,44 @@
+
+extends ../layouts/default
+
+append vars
+   - dtLyr.pageType = req.app.get('pageConstants').CONTRIBUTORS.identifier
+block css
+   style
+      include ../../public/resources/css/static.css
+
+block mainContent
+   .row
+      .static-header
+         h1.static-title Contributors at TDG
+      .content-wrapper
+         - each user in result.users
+            .col-sm-4
+               a.card.text-center(href="#{host}/traveller/#{user.slug}" title="Traveller #{user.user_name}")
+                  .content
+                     .img-circle(style="border-radius: 100%;overflow: hidden;max-width: 200px;max-height:200px;margin: 0 auto;")
+                        img(style="width:100%" src="https://graph.facebook.com/#{user.facebook}/picture?type=large" alt="#{user.user_name}")
+                     h4 #{user.user_name}
+                     .caption
+               a.inline-block(href="https://www.facebook.com/#{user.facebook}" title="Facebook of #{user.user_name}" itemprop="user" target="_blank") Facebook
+               if user.twitter
+                  a.inline-block(href="https://twitter.com/#{user.twitter}" itemprop="user" target="_blank" title="Twitter of #{user.user_name}") Twitter
+
+         .col-sm-4
+            .card.text-center
+               .content
+                  .img-circle(style="border-radius: 100%;overflow: hidden;max-width: 200px;margin: 0 auto;")
+                     img(style="width:100%" src="https://graph.facebook.com/100002413047929/picture?type=large" alt="Sanhati Adhikary")
+                  h4 Sanhati Adhikary
+                  .caption
+                     a(href="https://www.facebook.com/sanhati.adhikary" itemprop="user" target="_blank") Facebook
+
+
+
+
+
+
+
+
+
+

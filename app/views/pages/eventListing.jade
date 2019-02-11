@@ -1,0 +1,24 @@
+//
+   Created by Meraki on 3/24/2016.
+
+extends ../layouts/default
+append vars
+    - dtLyr.pageType = req.app.get('pageConstants').EVENT_LIST.identifier
+block css
+    style
+        include ../../public/resources/css/plan.css
+block mainContent
+    .row
+        .content-wrapper
+            .col-xs-12 The most popular events organised by travel d'globe
+            .col-xs-12
+                h2 Upcoming
+                .text-center Sorry, no upcoming event. Stay tuned :)
+            .col-xs-12
+                h2 Previous
+            .col-sm-4
+                a.card.content(href="#{host}/event/travel-memory-contest")
+                    h4 Travel Memory Contest
+                    p 28th FEb - 6th Mar 2016
+                    .caption #facebook #photography #cashPrize
+

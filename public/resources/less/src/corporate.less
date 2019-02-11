@@ -1,0 +1,40 @@
+@import '../variables';
+
+@fadedwhite: #c2f6db;
+@backcolor1: #66d07c;
+@backcolor2: #06a897;
+@buttontext: #00a497;
+
+.text-content{
+  padding: 75px 0;
+  color: @pallet-color-light;
+  background: linear-gradient(to bottom right, @backcolor1, @backcolor2);
+
+  .quote{
+    padding: @padding-large;
+    color: @pallet-color-primary;
+    background-color: fade(@pallet-background-light,90%);
+    font-weight: 600;
+    border-radius: 5px;
+    margin-bottom: @margin-large;
+  }
+}
+
+.static-header{
+  .static-title {
+    font-weight: bolder;
+    font-size: @multiplier-medium*@font-tile-head;
+    margin-bottom: @margin-large;
+  }
+  .subtitle {
+    line-height: 1;
+    font-size: @font-tile-head;
+    margin-bottom: @margin-large;
+  }
+}
+
+.brochure-button{
+  background: @pallet-background-light;
+  color: @buttontext;
+  margin-bottom: 15px;
+}

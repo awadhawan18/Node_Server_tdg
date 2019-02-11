@@ -1,0 +1,42 @@
+doctype html
+
+include ../mixins/iconMixin
+include ../mixins/metaMixin
+include ../mixins/paginationMixin
+include ../mixins/productMixin
+
+
+html(lang="en")
+  block vars
+    - var dtLyr = {}
+    - cannonical = "http://www.traveldglobe.com" + req.path
+    -impressions  = []
+  include ../includes/head
+
+  body
+
+    #content-container.container-fluid
+
+      - if (!hideHeader){
+        include ../includes/header
+      -}
+
+      .row.main-content
+        .col-xs-12
+          block mainContent
+          if tripAd
+            a.text-center.card.footer-ad(href="#{host}/trip" target="_blank" title="travel with team TDG and turn strangers to friends")
+              h2 "Turn strangers to friends and join our upcoming trips."
+              h4 Click to view more.
+              .caption #travel #group or #solo
+          if showPlanner
+            include ../includes/travelPlanner
+
+      - if (!hideFooter){
+        include ../includes/footer
+      -}
+
+      .fixed-overlay.hide.hidden-xs
+
+  include ../includes/foot
+  block js

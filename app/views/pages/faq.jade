@@ -1,0 +1,46 @@
+//
+   Created by abhishekjain on 13/03/17.
+
+
+extends ../layouts/default
+
+append vars
+    - dtLyr.pageType = req.app.get('pageConstants').FAQ.identifier
+block css
+    style
+        include ../../public/resources/css/static.css
+
+block mainContent
+    .row
+        .static-header
+            h1.static-title Frequently asked questions
+        .content-wrapper
+            .col-xs-12
+                ol
+                    li
+                        strong What are the pick up points? &nbsp;
+                        div Pickup points are mentioned in the itinerary. For the trips from New Delhi, the usual pickup points are:
+                        ul
+                            li
+                                span Gandhi Nagar, New Delhi (near by metro station: Shastri Park).
+                            li
+                                span Kashmere Gate Metro Station
+
+                    li
+                        strong What type of food/beverages are included in itinerary? &nbsp;
+                        div All veg meals will be served during the trip. Breakfast, lunch and dinner will be provided(timings are not strict). Non alcoholic beverages will be on welcome and with some of the meals.
+
+                    li
+                        strong How to pay to the trip? &nbsp;
+                        div Once you fill the form detail above, you can use PayTM or NEFT to pay for the trip, whose details will be shared. Read our traveller advisory to know the best way to travel.
+
+                    li
+                        strong Do I need to pay all at once?&nbsp;
+                        div It is your choice. However, you will have to pay 50% for reservation at the time of booking and need to pay rest on the trip start date.
+                    li
+                        strong How to confirm my seat?&nbsp;
+                        div It is very easy, fill the above form and mark your seat with 50% advance. That is refundable in case you cancel on before 5 days of trip start date (Cancellation Policy).
+
+    a.bottom-cover(href="#{host}/countries" title="explore all locations")
+        img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+

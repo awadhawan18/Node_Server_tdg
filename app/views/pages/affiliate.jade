@@ -1,0 +1,75 @@
+
+extends ../layouts/default
+
+append vars
+   - dtLyr.pageType = req.app.get('pageConstants').CONTACT.identifier
+   - showTrip = true
+   - headerDark = true
+   - showPlanner = true
+block css
+   style
+      include ../../public/resources/css/static.css
+
+block mainContent
+   .row
+      .static-header
+         h1.static-title Grow your business
+         p Join our affiliate network with our high performing and managed APi network.
+      .content-wrapper
+         .col-xs-12
+            h2 Who are we..
+            p travel d'globe ("we", "us", "traveldglobe" or "traveldglobe.com"), a Indian startup based upon the capital city New Delhi. Following the continuous changing travel trends, we engineered a best travel recommendation algorithm. We are presently a small team of people who left their experienced and well paid jobs to invest time to help the travelers out there in the world. For every traveler, we provide a quick solution to find their favorite destination on the globe.
+              strong Where to go, How to reach there and Things to do there.
+            p travel d'globe is derived from the French language which means
+               strong 'The travel of globe'.
+            p To resolve hiccups to explore on your, we designed a smooth navigation to discovery huge list of destinations. the destination discovery at travel'globe is extremely easy and crafted with new and popular interest levels. We managed to integrate the best and latest technology trends to make a product that effectively performs and cross the bars of travelers' expectations.
+
+            h2 We are always available:
+            p Feel free to reach us at&nbsp;
+               a.link(href="tel:+919210638305") #{phone}&nbsp;
+               span mail at&nbsp;
+               a.link(href="mailto:hello@traveldglobe.com") hello@traveldglobe.com&nbsp;
+               span Whether you want to make a travel plan, book tickets or trips or just want to say hello. We will reach to you quickly
+            .text-center
+               .fb-page(data-href="https://www.facebook.com/traveldglobe/" data-tabs="messages" data-width="400" data-height="300" data-small-header="true")
+                  .fb-xfbml-parse-ignore
+                     blockquote
+            h2 We are located at:
+            address  East Delhi, New Delhi, India
+            h2 Connect with us
+            div
+               a.social-connect-link.twitter(href='https://twitter.com/traveldglobe' title="Tweet to travel d'globe" target='_blank')
+                  mixin paintIcon('twitter')
+               a.social-connect-link.facebook(href='https://www.facebook.com/traveldglobe' title="Find travel d'globe on Facebook" target='_blank')
+                  mixin paintIcon('facebook',{size:{x:24,y:24}})
+               a.social-connect-link.google(href='https://plus.google.com/+traveldglobe' title="travel d'globe on Google plus" target='_blank')
+                  mixin paintIcon('google')
+               a.social-connect-link.instagram(href='https://instagram.com/traveldglobe' title="travel d'globe on Instagram" target='_blank')
+                  mixin paintIcon('instagram')
+               a.social-connect-link.pinterest(href='https://www.pinterest.com/traveldglobe' title="travel d'globe on Pinterest" target='_blank')
+                  mixin paintIcon('pinterest')
+               a.social-connect-link.youtube(href='https://www.youtube.com/c/Traveldglobe' title="travel d'globe on Youtube" target='_blank')
+                  mixin paintIcon('youtube')
+            p Spread the love for travel
+               .fb-like(data-href="https://www.facebook.com/traveldglobe" data-layout="standard" data-action="like" data-show-faces="true" data-share="false")
+
+   div(id="fb-root")
+   a.bottom-cover(href="#{host}/countries" title="explore all locations")
+      img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+
+block js
+   script.
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1151322284897579";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+
+

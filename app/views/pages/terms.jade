@@ -1,0 +1,41 @@
+//
+   Created by Himanshu wolf on 20/10/15.
+
+extends ../layouts/default
+
+append vars
+   - dtLyr.pageType = req.app.get('pageConstants').TERMS.identifier
+block css
+   style
+      include ../../public/resources/css/static.css
+
+block mainContent
+   .row
+      .static-header
+         h1.static-title Terms of use
+      .content-wrapper
+         .col-xs-12
+            div travel d'globe ("we", "us", "traveldglobe" or "traveldglobe.com") provides you with a tool to find the best plan for your next travel. By accessing or using the travel d'globe Internet site (“Site") and any service provided by us, including through any mobile application that we may provide (collectively, the “Services”) you agree that you have read, understood, accept and agree to be bound by these Terms, as well as our Privacy Policy.
+                                                                                                                                          div We reserve the right, in our sole discretion, to revise, modify or update these Terms at any time (including in order to remove functionality), and you agree to be bound by any revisions or modifications that we make. Therefore, please review these Terms periodically. Your continued use of the Services after any change or modification of these Terms has been made will constitute your acceptance of the revised Terms.
+
+            ol
+               li
+                  strong Ownership&nbsp;
+                  span All trademarks, service marks and trade names on this website, are proprietary TDG unless otherwise stated. No use of these may be made for any purpose whatsoever without the prior written authorization of TDG. The content of the site is either owned by us or the owners of contents such as data/images has granted the permission to use their resource for commercial purpose.
+
+               li
+                  strong Accuracy of Information&nbsp;
+                  span The information presented on this website has been compiled by TDG from various sources including from external sources. No representation is made or warranty given as to the completeness or accuracy of such information. This website may contain typographical errors, incomplete or out of date information. TDG reserves the right to make changes to the Content and information on this website, or to the services described therein, or update such information at any time without notice, but TDG makes no commitment to correct or update this information.
+
+               li
+                  strong Cookie Policy&nbsp;
+                  span We are committed to safeguarding the privacy of our website visitors. This privacy and cookie policy explains how we collect, store and use personal data about you when you browse Site, or otherwise provide your personal data to us. The website contains links to other websites. We are not responsible for the privacy and cookie policies or practices of third party websites. This website uses cookies which tell us statistical information about our website visitors, e.g. popular pages, what browsers are used, and how much time is spent on the website.
+
+               li
+                  strong Indemnification&nbsp;
+                  span You agree to defend, indemnify and hold TDG harmless from and against any and all claims, damages, costs and expenses, including attorney's fees, arising from or related to your use of this website, your access to, or inability to access this website, or from your reliance upon any information contained on this website.
+
+
+   a.bottom-cover(href="#{host}/countries" title="explore all locations")
+      img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+

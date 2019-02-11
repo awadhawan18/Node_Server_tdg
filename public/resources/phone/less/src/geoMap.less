@@ -1,0 +1,60 @@
+@import url('../variables');
+@import url('../mixins/allMixin');
+
+@region-west: #FF7043;
+@region-east: #FFF176;
+@region-north: #29B6F6;
+@region-south: #26A69A;
+@region-north-east: #43A047;
+
+.main-content {
+  background: fade(@pallet-background-primary, 80%);
+}
+
+.card {
+  background: fade(@pallet-background-light, 70%);
+}
+.tag-title {
+  font-size: @font-large;
+  font-family: cursive;
+  text-transform: capitalize;
+}
+
+.state-tile {
+  .img-cont {
+    position: relative;
+    margin-bottom: @margin-medium;
+    padding-bottom: 67%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    img {
+      left:0;
+      height: 100%;
+      width: 100%;
+      border-radius: 2px;
+      position: absolute;
+      z-index: @index-ground;
+      transition: all 0.3s 0s ease-in;
+    }
+
+  }
+  &.region {
+    border-bottom: 4px solid;
+    &.west {
+      border-color:@region-west;
+    }
+    &.east {
+      border-color:@region-east;
+    }
+    &.north {
+      border-color:@region-north;
+    }
+    &.south {
+      border-color:@region-south;
+    }
+    &.north-east {
+      border-color:@region-north-east;
+    }
+  }
+}

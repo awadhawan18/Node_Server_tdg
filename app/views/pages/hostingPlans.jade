@@ -1,0 +1,127 @@
+//
+   Created by abhishekjain on 03/04/17.
+
+extends ../layouts/default
+
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').HOSTING_PLANS.identifier
+block css
+  style
+    include ../../public/resources/css/hostingPlan.css
+
+
+block mainContent
+  .col-sm-12
+    .content-wrapper
+      section
+        .title.text-center
+          h1.color-title Get Online in 2 Days
+          h3 Travel website for tours & activities.
+        h2.text-center Get a Fully-functional professional travel website, designed by experts, to help you sell more tours and make money. Working website within 2 days.
+        div.hidden-xs
+          img( style="display:block;margin:0 auto;max-width:800px width:100%" src="#{static}/resources/images/create-a-website.png" alt="Get a Fully-functional professional travel website, designed by experts, to help you sell more tours and make money. Working website within 2 days.")
+    .content-wrapper
+      section
+        .row
+          .col-sm-12
+            h2.text-center No artificial limits. Pay for what you use.
+          each plan, index in results.plans
+            .col-sm-3.text-center
+              .card
+                .head
+                  h2 #{plan.name}
+                  if plan.price == 0
+                    h3 FREE
+                  else
+                    h3 ₹#{plan.price} / Month
+                .content
+                  .head-section
+                    h2
+                      .figure #{plan.visitorAllowed}
+                      span Visitors Allowed
+                  .head-section
+                    h2
+                      .figure #{plan.storageSpace} GB
+                      span Storage Space
+                  .head-section
+                    h2
+                      .figure #{plan.monthlyBandwidth} GB
+                      span Monthly Bandwidth
+
+                  .head-section
+                    h2
+                      .figure #{plan.itineraryListing}
+                      span Itinerary Listing
+                  .booking-btn(style="margin-top:15px;")
+                    a.btn.btn-primary.lg(data-slug="#{plan.name}" href="/contact") Contact Us
+
+
+    .content-wrapper
+      section
+        h2.text-center.title Compare Plans
+        p If you are yet to have a website or online booking system. We at travel d'globe have engineered the travel booking system that can be used by any one to display the itineraries/plans and book the plans online and increase your sales. You can get the system within a couple of days to get the online bookings and manage the customers.
+        .row
+          ul.list.alternate
+            li.head
+              .col-sm-6.col-sm-offset-6
+                .row
+                  .col-sm-3.heading BASIC
+                  .col-sm-3.heading PRO
+                  .col-sm-3.heading PREMIUM
+                  .col-sm-3.heading ENTERPRISE
+            each key, value in results.featuresHeading
+              -if(value!="name" && value!="price")
+              li
+                .col-sm-6.heading #{results.featuresHeading[value]}
+                .col-sm-6
+                  .row
+                    .col-sm-3
+                      if !results.basic[value]
+                        span -
+                      else
+                        span #{results.basic[value]}
+                    .col-sm-3
+                      if !results.pro[value]
+                        span -
+                      else
+                        span #{results.pro[value]}
+                    .col-sm-3
+                      if !results.premium[value]
+                        span -
+                      else
+                        span #{results.premium[value]}
+                    .col-sm-3
+                      if !results.enterprise[value]
+                        span -
+                      else
+                        span #{results.enterprise[value]}
+    section
+      .row
+        .col-sm-4
+          h3.color-title What you will get
+          ul.list
+            li Website Live Time on your domain- 2 Days
+            li Online Booking
+            li Itinerary Listing
+            li Gallery
+            li Inclusions Lists
+            li Fixed Departures Booking
+            li Contact Form
+        .col-sm-4
+          h3.color-title Special things you will get
+          ul.list
+            li Free UI updates
+            li Initial Content addition
+            li Additional 1 month on Yearly plans
+            li Basic SEO
+            li 1 Week Training to use Admin Panel
+        .col-sm-4
+          h3.color-title What you have to do
+
+          ul.list
+            li Use the Admin Panel to manage plans
+            li Manage the bookings
+            li Maintain the Content on your website
+            li Share the website over social media
+            li Link Facebook Page for Reviews
+            li Accept the terms of use

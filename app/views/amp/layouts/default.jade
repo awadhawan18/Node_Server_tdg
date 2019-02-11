@@ -1,0 +1,28 @@
+doctype html
+
+include ../mixins/iconMixin
+include ../mixins/metaMixin
+include ../mixins/paginationMixin
+
+
+html(amp lang="en")
+  block vars
+    - var dtLyr = {}
+    - cannonical = "http://www.traveldglobe.com" + req.path
+  include ../includes/head
+
+  body
+    include ../includes/mobileMenu
+    #content-container.container-fluid
+
+      - if (!hideHeader){
+        include ../includes/header
+      -}
+
+      .row.main-content
+        .col-xs-12
+          block mainContent
+
+      - if (!hideFooter){
+        include ../includes/footer
+      -}

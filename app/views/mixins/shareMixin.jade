@@ -1,0 +1,32 @@
+mixin itineraryShare(sharingUrl, source, destination)
+    block
+    mixin paintIcon('share', {fill: "#e90a61", "stroke":'#000', size: {y : '30',x : '30'}})
+    span Share Itinerary
+    .tooltip-content(id="sharePlan", style="min-width:230px;")
+        .col-sm-6.text-center(style="margin-bottom:15px;")
+            mixin paintIcon('link', {fill: "#e90a61", "stroke":'#000', size:{x:30,y:30}})
+            div(style="font-size:12px;") Copy Link
+        .col-sm-6.text-center(style="margin-bottom:15px;")
+            mixin paintIcon('email', {fill: "#e90a61",size:{x:30,y:30}})
+            div(style="font-size:12px;") Email Itinerary
+        .col-sm-12.text-center
+            a.social-connect-link.twitter(target="_blank" href="https://twitter.com/share?text=#{'I found this Itinerary from ' + #{source.name} + ' to ' + #{destination.name}}&via=traveldglobe&url=#{sharingUrl}&hashtags=ttot%2CtravelWithTDG&related=traveldglobe" title="Share on Twitter")
+                mixin paintIcon('twitter')
+            a.social-connect-link.facebook(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=#{sharingUrl}" title="Share on Facebook")
+                mixin paintIcon('facebook',{ size:{x:24,y:24}})
+            a.social-connect-link.pinterest(target="_blank" href="https://pinterest.com/pin/create/button/?url=http%3A//www.traveldglobe.com&media=#{destination.image_url}&description=#{'I found this Itinerary from ' + #{source.name} + ' to ' + #{destination.name}}" title="Share on pinterest")
+                mixin paintIcon('pinterest')
+            a.social-connect-link.google(target="_blank" href="https://plus.google.com/share?url=#{sharingUrl}" title="Share on google")
+                mixin paintIcon('google')
+
+
+mixin socialShare(sharingUrl, sharingContent, showAlways)
+    block
+    .social-share(class=showAlways?'show':'')
+        .sharing-content
+            .share-heading Share
+            a.tr-share.social-connect-link.facebook(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=#{sharingUrl}&t=#{sharingContent}" rel="nofollow" title="Share this post on Facebook")
+                mixin paintIcon('facebook', { size:{x:20,y:20}})
+            a.tr-share.social-connect-link.twitter(target="_blank" href="https://twitter.com/share?text=I found #{sharingContent}&via=traveldglobe&url=#{sharingUrl}&hashtags=ttot%2CtravelWithTDG&related=traveldglobe" title="Share on Twitter")
+                mixin paintIcon('twitter', { size:{x:20,y:20}})
+

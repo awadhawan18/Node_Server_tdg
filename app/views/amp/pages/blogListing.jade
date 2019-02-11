@@ -1,0 +1,84 @@
+//
+   Created by Himanshu wolf on 07/02/16.
+extends ../layouts/default
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').BLOG_LISTING.identifier
+  - page = req.query.page || 1
+  - page_size = req.query.page_size || 20
+  - cannonical = host + '/blog'
+
+block mainContent
+  .row
+    .content-wrapper
+      .col-xs-12.text-center
+        h3 One blog of your last trip will create the lifetime memory for you and your friends.
+        div
+          a.btn.btn-secondary(href="/add-blog") Create your first story
+      .col-xs-12
+        h2.subtle Recent Posts
+      .col-xs-12
+        - pages_count = Math.ceil(result.blogs_count/page_size)
+        mixin getPagination(page, pages_count, result.blogs.length, result.blogs_count, page_size)
+
+      .col-xs-12
+        each blog, index in result.blogs
+            a.card.blog-tile(href="#{host}/blog/#{blog.slug}")
+              if blog.thumb_url
+                  .img-cont
+                      amp-img(src="#{blog.image_url}" height="300" width="400")
+              .content
+                h2 #{blog.title}
+                - last_update = req.app.get('moment')(blog.updated_at).format('ll')
+                h5 Last update: #{last_update}
+                .caption ##{blog.category.name}
+                if blog.sub_title
+                  p #{blog.sub_title}
+          if(index==3)
+              a.card.blog-tile.ad(href="#{host}/weekend-getaways-from-new-delhi" title="Places to visit near Delhi")
+                .img-cont
+                  amp-img(src="http://res.cloudinary.com/del7capiy/image/upload/w_640,h_480,fl_progressive,q_50/v1473008584/location/new-delhi-india-gate_xbxqxm.jpg" alt="weekend getaways from new delhi")
+                .content
+                  h3 Weekend Getaways from Delhi
+                  h4 Find out the best places to travel with your family, friends or solo.
+                  p Capital City of India is one of the most enthusiastic & happiest metro of all with full of day and night life. Delhi is full of bars, cafes, malls, cultural spots with no end to interesting places you can spend your day which will fill you with joy and many more. From Paranthe wali gali to Hauz Khas village or Great India Palace to Adventure Island, Delhi has everything you need.
+          if(index==7)
+              a.card.blog-tile.ad(href="#{host}/weekend-getaways-from-mumbai")
+                .img-cont
+                  amp-img(src="http://res.cloudinary.com/himanshujain/image/upload/w_640,h_480,fl_progressive,q_50/v1449688619/location/Mumbai_qbsjad.jpg" alt="weekend getaways from mumbai")
+                .content
+                  h3 Weekend Getaways from Mumbai
+                  h4 Find out the best places to travel with your family, friends or solo.
+                  p Mumbai is in all ways a mega-city driven by power, wealth, glamour and fame which attracts people to give shape to their dreams and aspirations. But it is also a city with strong historical links, wonderful British architecture, museums, beaches, places of worship, and above all, a true galaxy of stars where Bollywood reigns supreme.
+      .col-xs-12
+        mixin getPagination(page, pages_count, result.blogs.length, result.blogs_count, page_size)
+      .col-xs-12
+          h4 Destinations From New Delhi
+          ul.link.list
+            li
+              a(href="#{host}/find-places/from--new-delhi?traveling_with=friends&travel_time=2") Weekend trip with friends
+            li
+              a(href="#{host}/find-places/from--new-delhi?traveling_with=couple&travel_time=2") Travel with your spouse
+            li
+              a(href="#{host}/find-places/from--new-delhi?traveling_with=friends&travel_time=7&interests%5B%5D=adventure") Week long adventures
+            li
+              a(href="#{host}/find-places/from--new-delhi?traveling_with=solo&travel_time=4") For solo travellers
+          h4 Destinations From Mumbai
+          ul.link.list
+            li
+              a(href="#{host}/find-places/from--mumbai?traveling_with=family&travel_time=2&budget=") For Family trips
+            li
+              a(href="#{host}/find-places?/from--mumbaitraveling_with=couple&travel_time=2&source=mumbai&budget=") Travel with your spouse
+            li
+              a(href="#{host}/find-places/from--mumbai?traveling_with=friends&travel_time=2&source=mumbai") Weekend trip with friends
+          h4 Destinations From Bangalore
+          ul.link.list
+            li
+              a(href="#{host}/find-places/from--bangalore?traveling_with=friends&travel_time=3") Weekend trip with friends
+            li
+              a(href="#{host}/find-places/from--bangalore?traveling_with=couple&travel_time=3") Romantic trips
+            li
+              a(href="#{host}/find-places/from--bangalore?traveling_with=friends&travel_time=4&interests%5B%5D=leisure") For office friends
+      .col-xs-12
+        h2 Travelogues, where to go, skills to learn while travelling.
+        p Travel stories are always interesting, they refresh the memories of the traveller and inspire the readers to travel to the next destination. At traveldglobe, we look to inspire more travellers to visit the exotic destinations. Our blog will help you know the next travel destination, you will know where to go. This blog has the best of adventure destination, with the guide to most popular and treacherous trekking trails. You will learn the skills to trek, camp and photograph like experts. The travel stories published are crafted by the most passionate travellers. If you want to publish your travel story, just mail your story at hello@traveldglobe.com and our content team will help you craft the best story for the readers.
+

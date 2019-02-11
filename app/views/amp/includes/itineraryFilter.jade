@@ -1,0 +1,11 @@
+.filter
+   form(action ="#{url}")
+      .col-sm-2.date-container
+         label Start date
+         input.form-control.js-field.js-startDate(type="text" name="start_date" data-date-format="mm/dd/yyyy" value="#{result.preferences? result.preferences.start_date: ''}")
+      .col-sm-2
+         label Travel Days
+         input.form-control.js-field(type="text" name="travel_time" value="#{result.preferences?result.preferences.travel_time/24 : ''}")
+
+
+      input.btn.btn-secondary(type="submit" value="Filter itineraries")

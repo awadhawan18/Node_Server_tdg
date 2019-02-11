@@ -1,0 +1,391 @@
+@import '../variables';
+
+// styles for the static pages
+@circle-radius: 280px;
+
+.static-container {
+  .static-title {
+    background: @pallet-background-static;
+    padding: 5*@padding-large 0;
+    color:@pallet-color-light;
+    margin-bottom: @margin-medium;
+    font-size: 36px;
+    font-weight: 900;
+    line-height:30px;
+    h1 {
+      font-size: 36px;
+      font-weight: 900;
+    }
+  }
+}
+
+.static-header {
+  background: url('/resources/images/travel-of-globe.jpg') no-repeat;
+  position: relative;
+  background-size: cover;
+  background-position: 0 -300px;
+
+  .static-title {
+    text-align: center;
+    padding: 10*@padding-large 0;
+    color: @pallet-color-light;
+    margin-bottom: @margin-medium;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.2;
+    position: relative;
+    z-index: @index-floor;
+
+  }
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: fade(@pallet-background-footer, 30%);
+    width: 100%;
+    display: inline-block;
+    content: '';
+    z-index: @index-ground;
+  }
+}
+ol{
+  li {
+    margin-bottom: @margin-large;
+  }
+}
+
+.how-works {
+  background-color: fade(@pallet-background-primary, 60%);
+  text-align: center;
+  padding: 2*@padding-large 0;
+  margin-bottom: @multiplier-medium*@margin-large;
+
+  h1, h2 {
+    margin: 2*@margin-large 0;
+  }
+
+  .road-map-container {
+
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.5s 0s ease-out;
+
+    .circle {
+      width: @circle-radius;
+      height: @circle-radius;
+      margin: 0 auto @margin-large;
+      border-radius: 100%;
+      position: relative;
+      background: darken(@pallet-background-primary, 5%);
+
+      .content {
+        position: absolute;
+        width: calc(@circle-radius - 30px);
+        height: calc(@circle-radius - 30px);
+        left: 15px;
+        top: 15px;
+        border-radius: 100%;
+        background: @pallet-background-light;
+        z-index: 400;
+        img {
+          max-width: 220px;
+          margin-top: 40px;
+        }
+        .works-title {
+          label {
+            font-size: @font-large;
+          }
+        }
+      }
+
+
+      .pie {
+        width: 50%;
+        height: 100%;
+        transform-origin: 100% 50%;
+        position: absolute;
+        background: @pallet-theme;
+
+        &.spinner {
+          border-radius: @circle-radius/2 0 0 @circle-radius/2;
+          z-index: 200;
+          transform: rotate(-90deg);
+          border: none;
+        }
+        &.fill {
+          border-radius: @circle-radius/2 @circle-radius/2 0 0;
+          left: 0;
+          height: 50%;
+          width: 100%;
+          opacity: 0;
+          z-index: 100;
+          border: none;
+        }
+      }
+      .mask {
+        width: 100%;
+        height: 50%;
+        background: darken(@pallet-background-primary, 5%);
+        border-radius: 0 0 @circle-radius/2 @circle-radius/2;
+        position: absolute;
+        bottom: 0;
+        opacity: 1;
+        z-index: 300;
+      }
+      &._120 {
+        .spinner {
+          transition: all 1s 0s linear;
+        }
+      }
+      &._240 {
+
+        .spinner {
+          transition: all 2s 0s linear;
+        }
+        .fill {
+          transition: all 0s 1.5s linear;
+        }
+        .mask {
+          transition: all 0s 1.5s linear;
+        }
+
+      }
+      &._360 {
+        .spinner {
+          transition: all 2s 0s linear;
+        }
+        .fill {
+          transition: all 0s 1s linear;
+        }
+        .mask {
+          transition: all 0s 1s linear;
+        }
+      }
+
+    }
+    &.display {
+      transform: translateY(0);
+      opacity: 1;
+
+      ._120 {
+        .spinner {
+          transform: rotate(30deg);
+        }
+
+      }
+      ._240 {
+        .spinner {
+          transform: rotate(150deg);
+        }
+        .fill {
+          opacity: 1;
+        }
+        .mask {
+          z-index: 100;
+        }
+      }
+      ._360 {
+        .spinner {
+          transform: rotate(270deg);
+        }
+        .fill {
+          opacity: 1;
+        }
+        .mask {
+          z-index: 100;
+        }
+      }
+    }
+  }
+}
+
+.social-link, .social-connect-link {
+  display: inline-block;
+  padding: 7px;
+  border-radius: 20px;
+  margin: 0 @margin-base;
+  &.twitter {
+    background: @social-color-twitter;
+  }
+  &.facebook {
+    background: @social-color-facebook;
+  }
+  &.instagram {
+    background: @social-color-instagram;
+  }
+  &.google {
+    background: @social-color-google;
+  }
+  &.pinterest {
+    background: @social-color-pinterest;
+  }
+  &.youtube {
+    background: @social-color-youtube;
+  }
+}
+.social-connect-link {
+  border: 1px solid @pallet-border-primary;
+  border-radius: 100%;
+}
+
+.team-icon {
+  border: 1px solid @pallet-border-primary;
+  border-radius: 100%;
+  display: inline-block;
+  padding: 15px;
+  width: 140px;
+  margin-right: 15px;
+  height: 140px;
+  text-align: center;
+}
+
+.what-we-do {
+  color: @pallet-color-light;
+
+  &.where {
+    background: #43A047;
+  }
+  &.how {
+    background: #FF7043;
+  }
+  &.plan {
+    background: #1976D2;
+  }
+  &.card.round {
+    border: none;
+    .content {
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+ul, ol {
+  li {
+    margin-bottom: @margin-medium;
+  }
+}
+table {
+  thead {
+    font-weight: bold;
+  }
+  tr, thead {
+    td, th {
+      border: 1px solid @pallet-border-primary;
+      padding: @padding-medium;
+    }
+  }
+}
+
+.know-travel-type {
+  padding: @padding-large 0;
+  .question-set {
+    display: none;
+
+    .question {
+      text-align: center;
+      color: @pallet-color-link;
+      font-weight: bold;
+    }
+    .options {
+      margin: @margin-large;
+      .option {
+        padding: @padding-medium @padding-base;
+        background: @pallet-background-secondary;
+        border: 1px solid @pallet-border-primary;
+        border-radius: 5px;
+        display: block;
+        text-align: center;
+        margin-bottom: @margin-medium;
+        input {
+          display: none;
+        }
+      }
+    }
+
+    &.show {
+      display: block;
+    }
+
+  }
+}
+
+.bottom-cover {
+  margin: @margin-large 0;
+  img {
+    width: 100%;
+  }
+}
+
+.token-tile {
+  min-height:300px;
+  .content {
+    position: relative;
+  }
+  .model {
+    position: absolute;
+    z-index: 200;
+    background: @pallet-background-landing;
+    color: #fff;
+    text-transform: capitalize;
+    right: -6px;
+    top: -10px;
+    padding: 2px 5px;
+    min-width: 75px;
+    text-align: center;
+    font-weight: bold;
+    &:after {
+      content:'';
+      position: absolute;
+      right: 2px;
+      bottom: -4px;
+      border: 4px solid;
+      border-color: darken(@pallet-background-landing, 10%) transparent transparent transparent;
+      transform: rotateZ(133deg)
+
+    }
+    &.food {
+      background: @pallet-model-food;
+
+      &:after {
+        border-color: darken(@pallet-model-food, 10%) transparent transparent transparent;
+      }
+
+    }
+    &.souvenir {
+      background: @pallet-model-souvenir;
+      &:after {
+        border-color: darken(@pallet-model-souvenir,10%) transparent transparent transparent;
+      }
+    }
+    &.activity {
+      background: @pallet-model-activity;
+      &:after {
+        border-color: darken(@pallet-model-activity,10%) transparent transparent transparent;
+      }
+    }
+    &.blog {
+      background: @pallet-model-blog;
+      &:after {
+        border-color: darken(@pallet-model-blog,10%) transparent transparent transparent;
+      }
+    }
+    &.state,&.country {
+      background: @pallet-model-region;
+      &:after {
+        border-color: darken(@pallet-model-region,10%) transparent transparent transparent;
+      }
+    }
+    &.destination {
+      background: @pallet-model-destination;
+      &:after {
+        border-color: darken(@pallet-model-destination,10%) transparent transparent transparent;
+      }
+    }
+  }
+}
+@media(max-width: @screen-xs) {
+  .static-header {
+    background-position: 0;
+  }
+}

@@ -1,0 +1,16 @@
+extends layouts/default
+
+append vars
+  - dtLyr.pageType = '500 error'
+  - var hideHeader = true
+  - var hideFooter = true
+  - var errCode = '500'
+
+block mainContent
+  .container.text-center
+    a.home-icon(href='/', style='margin-top:20px;display:inline-block;')
+      img(src="/resources/images/logo/tdg_red.svg" alt="travel d'globe")
+    h1.error-code 500
+    div OOPS! Something went down
+    div
+      img(src="https://media.giphy.com/media/13E2uKO2hcHLHi/giphy.gif")

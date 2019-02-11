@@ -1,0 +1,31 @@
+
+mixin hoteSearchWidget(location)
+   - today = new Date();
+   - today.setDate(today.getDate() + 2);
+   - checkin = ("0" + today.getDate()).slice(-2);
+   -checkin += '-';
+   -checkin += ("0" + (today.getMonth() + 1)).slice(-2);
+   -checkin += '-';
+   -checkin += today.getFullYear();
+   -- today.setDate(today.getDate() + 1);
+   -checkout= ("0" + today.getDate()).slice(-2);
+   -checkout += '-';
+   -checkout += ("0" + (today.getMonth() + 1)).slice(-2);
+   -checkout += '-';
+   -checkout += today.getFullYear();
+
+   .hotel-global-search.js-hotelSearch
+      h4 Search the Cheap and Budget Stay/Hotel in #{location.name}
+      form(action='/stay')
+         .place.input-field
+            label Place
+            input.form-control.js-location(place="#{location.slug}" type="text" data-place="#{location.slug}" value="#{location.name}")
+         .date.input-field.date-container.checkin
+            label Check in
+            input.form-control.js-travelDate.js-checkin(type="text" name="checkin" data-date-format="dd-mm-yyyy" value="#{checkin}")
+         .date.input-field.date-container.checkout
+            label Check out
+            //.day 17
+            //.year Apr 2017
+            input.form-control.js-travelDate.js-checkout(type="text" name="checkout" data-date-format="dd-mm-yyyy" value="#{checkout}")
+         button.btn.btn-primary Search Stays

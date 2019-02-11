@@ -1,0 +1,34 @@
+
+header.header.row
+  .content-wrapper
+    .col-xs-6
+      a.home-icon(href='/' title="traveldglobe home - where to go")
+        amp-img(src="/resources/phone/images/logo/traveldglobe-red.png" width="130" height="24")
+        .tag-line Where to go
+    .col-xs-5.text-right
+      if user
+        .header-menu
+          .login-icon(href="/auth/facebook?returnUrl=#{req.url}")
+            mixin paintIcon('traveller', {size: {y : '35',x : '20'}, strokeWidth:2})
+          .drop-menu
+            ul.menu
+              li
+                a(href='#') Hi #{user.user_name}
+              li
+                a(href='/trip')  Upcoming trips
+              li
+                a(href='/traveller/#{user.slug}')  My profile and stories
+              li
+                a(href="/user/logout?returnUrl=#{req.url}")  Log out
+      else
+        a(href="/auth/facebook?returnUrl=#{req.url}")
+          span Login
+          span.login-icon
+            mixin paintIcon('traveller', {size: {y : '35',x : '20'}, strokeWidth:2})
+
+    .col-xs-12
+      .search-box
+        a.search-icon(href="#{host}/search")
+          mixin paintIcon('search', {fill:'#333333'})
+        input(type="search" class="form-control js-autoSearch" placeholder="Search Kasol, Mcleodganj or Triund")
+        .loader Searching...

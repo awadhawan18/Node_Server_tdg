@@ -1,0 +1,39 @@
+@import "../variables";
+@import '../mixins/allMixin';
+
+.collection-container {
+  .img-cont {
+    position: relative;
+    padding-bottom: 67%;
+    overflow: hidden;
+    white-space: nowrap;
+    .placeholder;
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 2px;
+      position: absolute;
+      z-index: @index-ground;
+      transition: all 0.3s 0s ease-in;
+    }
+    &:hover {
+      box-shadow: 0 0 1px 1px @pallet-border-secondary;
+
+      img {
+        transform: scale(1.08,1.09)
+      }
+
+    }
+  }
+}
+.dest-tile {
+  .img-cont {
+    &:before {
+      display: none;
+    }
+  }
+}
+.weekend-tile {
+
+}

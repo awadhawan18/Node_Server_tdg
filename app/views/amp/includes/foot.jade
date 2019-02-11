@@ -1,0 +1,67 @@
+style(scoped).
+  @import "https://fonts.googleapis.com/css?family=Pontano+Sans"
+
+
+- if(home)
+  script(type="text/javascript", src="#{static}/resources/phone/js/TDG_LP.m.js" async)
+- else
+  script(type="text/javascript", src="#{static}/resources/phone/js/TDG.m.js")
+
+script.
+  window.onload = function() {
+    dataLayer.push({
+      'pageType' : "#{dtLyr.pageType}",
+      'cohort' : TDG.utils.readCookie('cohort')
+    });
+  };
+
+script(type="application/ld+json").
+  {
+    "@context" : "http://schema.org",
+    "@type" : "Website",
+    "alternateName" : "traveldglobe",
+    "url" : "http://www.traveldglobe.com",
+    "potentialAction": {
+       "@type": "SearchAction",
+       "target": "http://www.traveldglobe.com/search?query={search_term_string}",
+       "query-input": "required name=search_term_string"
+     },
+    "sameAs" : [
+    "https://twitter.com/traveldglobe",
+    "https://plus.google.com/+traveldglobe",
+    "https://www.facebook.com/traveldglobe",
+    "https://www.instagram.com/traveldglobe",
+    "https://www.youtube.com/c/Traveldglobe"
+  ]
+  }
+script(type="application/ld+json").
+  {
+  "@context" : "http://schema.org",
+    "@type" : "brand",
+    "logo" : "http://www.traveldglobe.com/resources/images/logo/traveldglobe-red.png",
+    "name" : "travel d'globe",
+    "alternateName" : "traveldglobe",
+    "url" : "http://www.traveldglobe.com",
+    "description" : "Here is the best answer for where and how to travel next. Find the unexplored destinations here and the best way to reach there."
+
+    }
+
+if doAnalytics
+  noscript
+    iframe(src="//www.googletagmanager.com/ns.html?id=GTM-WW45NS"
+      height="0" width="0" style="display:none;visibility:hidden")
+  script.
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WW45NS');
+  script.
+    (function(h,o,t,j,a,r){
+           h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+           h._hjSettings={hjid:166775,hjsv:5};
+           a=o.getElementsByTagName('head')[0];
+           r=o.createElement('script');r.async=1;
+           r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+           a.appendChild(r);
+       })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');

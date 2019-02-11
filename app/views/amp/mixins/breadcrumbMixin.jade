@@ -1,0 +1,48 @@
+mixin activityBreadCrumb(location, activity)
+   - counter = 1
+   ul.breadcrumb(itemscope itemtype="http://schema.org/BreadcrumbList")
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="#{host}" title="travel d\'globe | Home")
+            span(itemprop="name") Home
+         meta(itemprop="position" content="#{counter}")
+      - counter += 1
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="#{host}/country/#{location.country.slug}" title="Locations in #{location.country.name}")
+            span(itemprop="name") #{location.country.name}
+         meta(itemprop="position" content="#{counter}")
+      - counter += 1
+      if location.state.slug
+         li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+            a.link(itemprop="item" href="#{host}/country/#{location.country.slug}/#{location.state.slug}" title="Locations in #{location.state.name}")
+               span(itemprop="name") #{location.state.name}
+            meta(itemprop="position" content="#{counter}")
+         - counter += 1
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="#{host}/destination/#{location.slug}" title="#{location.name}- #{location.title}")
+            span(itemprop="name") #{location.name}
+         meta(itemprop="position" content="#{counter}")
+   span #{activity}
+
+mixin stateBreadCrumb(country, state)
+   ul.breadcrumb(itemscope itemtype="http://schema.org/BreadcrumbList")
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="/" title="travel d\'globe | Home")
+            span(itemprop="name") Home
+         meta(itemprop="position" content="1")
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="#{host}/country/#{country.slug}" title="Locations in #{country.name}")
+            span(itemprop="name") #{country.name}
+         meta(itemprop="position" content="2")
+   span #{state.name}
+
+mixin countryBreadCrumb(country)
+   ul.breadcrumb(itemscope itemtype="http://schema.org/BreadcrumbList")
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="/" title="travel d\'globe | Home")
+            span(itemprop="name") Home
+         meta(itemprop="position" content="1")
+      li(itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+         a.link(itemprop="item" href="#{host}/countries" title="the travel of globe")
+            span(itemprop="name") Countries
+         meta(itemprop="position" content="2")
+   span #{country.name}

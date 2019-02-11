@@ -1,0 +1,23 @@
+@import "../variables";
+@import '../mixins/allMixin';
+
+.filters {
+  .filter-option {
+      padding: @padding-base;
+      margin: 0 @margin-medium @margin-base;
+      background: @pallet-background-primary;
+      border-radius: 2px;
+      border: 1px solid @pallet-border-primary;
+      text-align: center;
+      min-width: 80px;
+      font-weight: 400;
+      display: inline-block;
+      cursor: pointer;
+      transition: all .5s;
+
+      &.selected {
+        background: #00bb88;
+        color: @pallet-color-light
+      }
+  }
+}

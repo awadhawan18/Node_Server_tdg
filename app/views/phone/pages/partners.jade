@@ -1,0 +1,43 @@
+//
+   Created by abhishekjain on 22/03/17.
+
+extends ../layouts/default
+
+append vars
+    - dtLyr.pageType = req.app.get('pageConstants').PARTNERS.identifier
+block css
+    style
+        include ../../../public/resources/css/static.css
+
+block mainContent
+    .row
+        .static-header
+            h1.static-title Partners of TDG
+        .content-wrapper
+            .col-xs-12
+                div travel d'globe is aim to be the all need travel solution, in a plan to achieve that we always look to partner with amazing people. Drop us an email at hello@traveldglobe.com or connect to our social profiles.
+                .text-center
+                    .social-links.v-space
+                        a.social-link.twitter(href='https://twitter.com/traveldglobe' title="Tweet to travel d'globe" target='_blank')
+                            mixin paintIcon('twitter')
+                        a.social-link.facebook(href='https://www.facebook.com/traveldglobe' title="Find travel d'globe on Facebook" target='_blank')
+                            mixin paintIcon('facebook',{size:{x:24,y:24}})
+                        a.social-link.instagram(href='https://instagram.com/traveldglobe' title="travel d'globe on Instagram" target='_blank')
+                            mixin paintIcon('instagram')
+                h2 Travel Partner
+                    .row
+                        - each vendor in result.vendors
+                            .col-xs-12
+                                a.card.content.link-card(href="#{host}/page/#{vendor.slug}" title="Details about #{vendor.name}")
+                                    h3 #{vendor.name}
+                                    h5 #{vendor.code}
+
+                h2 Coupon Partner
+                    .row
+                        .col-xs-12
+                            a.card.dark.link-card(href="http://www.couponzguru.com/traveldglobe-coupons")
+                                img(src="#{static}/resources/images/partners/couponzguru.png" alt="couponzguru is the coupon partner of travel d'globe")
+
+
+
+

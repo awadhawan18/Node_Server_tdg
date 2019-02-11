@@ -1,0 +1,194 @@
+mixin renderRoutes(routes, is_suggested, source, destination)
+   each route_node, counter in routes
+     -travelExpense = 0
+     -roamingExpense = 0
+     -totalTime = 0
+     -totalDistance = 0
+     -wayPoint = source.slug + '~'
+     div(class="card row itinerary #{counter == 0 ? 'open' : ''}")
+       .js-routeBlock.route-block
+         .col-xs-12.text-center
+           - routeId = []
+           each node, index in route_node.node_names
+             h2.node_name(itemprop="location" itemscope itemtype="http://schema.org/Place")
+               span(itemprop="name") #{node}
+             - connection = route_node.route[index]
+             if(connection)
+               - routeId.push(connection.id)
+               .connection
+                 h3 #{connection.name}
+                 div Distance: #{connection.distance} kms
+                 div Est. Time: #{connection.travel_time} hours
+                 div Approx expense: &#8377;#{connection.expense}
+                 .transport
+                   mixin paintIcon(connection.transport.slug, {fill:'#333'})
+               -totalDistance += 2*connection.distance
+               -travelExpense +=  2*connection.expense
+               -totalTime +=  2*parseFloat(connection.travel_time)
+           .col-xs-12.text-center.more
+             div
+               small Click for more
+             .arrow
+         -totalDays = Math.ceil(totalTime / 24)
+         -start_date = req.app.get('moment')(result.preferences.start_date, 'MM/DD/YYYY').format('ll')
+         -end_date = req.app.get('moment')(result.preferences.start_date, 'MM/DD/YYYY').add(totalDays, 'days').format('ll')
+       .summary-block
+         .row
+           .col-sm-8
+             h4 Trip Summary*
+             .col-sm-6 &#8377;#{travelExpense} + !{'&#' + currency + ';' + roamingExpense}  | #{totalDays} days |&nbsp;
+               span(itemprop="distance") #{totalDistance} kms
+             .col-sm-6 #{start_date} - #{end_date}
+           if destination.get_quote
+             .col-sm-4.text-right
+               small
+                span.help ?
+                span Get your personalized itinerary
+
+               form.js-validate-form
+                 input.form-control(type="hidden"  name="routeId" value="#{routeId}")
+                 input.form-control(type="hidden"  name="destination" value="#{result.destination.id}")
+                 input.form-control(type="hidden"  name="source" value="#{result.source.id}")
+                 .input-group
+                   input.form-control(type="text" placeholder="myname@gmail.com" name="email" data-validate="empty, email" data-fieldType="email")
+                   span.btn.btn-primary.input-btn.js-getQuote.js-validate-submit.tr-getItinerary(type="button") Get Quote
+           else
+             .btn.btn-primary.js-tooltip.tooltip(data-target="#contactForm" title="Get a call from our travel expert") Need more details?
+               .tooltip-content.js-tooltipContent(id="contactForm")
+                 h4 Get a call from our travel expert for free
+                 form.js-validate-form.row
+                   input(type="hidden" name="slug" value="#{req.originalUrl}" )
+                   .col-sm-12.form-item
+                     label Name
+                       span.mandatory *
+                       input.form-control(type="text" placeholder="Your name, please" name="username")
+                   .col-sm-12.form-item
+                     label Mobile
+                       span.mandatory *
+                       input.form-control(type="text" placeholder="10 digits to hear from us" name="phone" data-validate="phone" data-fieldType="phone")
+                   .col-sm-12
+                     button.btn.btn-secondary.js-getCall.js-validate-submit Request a call
+           .col-xs-12
+             //a(target='_blank' href="#{host}/itinerary/from--#{source.slug}/to--#{destination.slug}/routes/#{wayPoint}/map/#{route_node.itinerary_id}") View on map
+             div
+               small *Prices includes only travel expenses and may vary with preferences.
+mixin renderPointOfInterest(routes, is_suggested, source, destination)
+   each route_node, counter in routes
+     -travelExpense = 0
+     -roamingExpense = 0
+     -totalTime = 0
+     -totalDistance = 0
+     -wayPoint = source.slug + '~'
+       .itinerary-content.col-xs-12
+         .todo-list.row
+           -latLong = ''
+           each node, index in route_node.nodes_data
+             -latLong += node.latitude + ',' +node.longitude + '/'
+             -wayPoint += node.slug + '~'
+             - nodeId = node.location_id
+             -totalTime +=  node.stay_time
+             -currency =  node.currency.symbol
+
+             each activity,index in node.activities
+               -activities.push(activity)
+               - isSelected = index==0
+               - isThumbHide = 'thumb-hide'
+               if nodeId == destination.id || (index<3 &&  nodeId != destination.id)
+                 - isThumbHide = ''
+                 .col-sm-4.colxs-6
+                   .card
+                     a(class= "js-activityTile activity-tile #{activity.slug} #{isThumbHide}" href="" data-href="#{host}/destination/#{node.slug}/point-of-interest/#{activity.slug}")
+                       .activity(itemprop='object' itemscope itemtype="http://schema.org/Thing")
+                         .js-check.hide
+                           input(type="checkbox" value="#{activity.slug}" name="selectedActivity")
+                         .thumb
+                           if counter == 0
+                              img( itemprop='image' src="#{activity.thumb_url}" alt="#{activity.name}")
+                           else
+                              img( itemprop='image' src="" data-src="#{activity.thumb_url}" alt="#{activity.name}")
+                       .content
+                         .detail
+                           h4.text-center.ellipsis(itemprop='name' title="#{activity.name}") #{activity.name}
+                           .small Expenses - !{activity.expense ? '&#' + currency + ';' + activity.expense : 'NA'}
+                           .small Time needed - #{activity.time ? activity.time : 'NA'} hours
+                           -roamingExpense += Number(activity.expense)
+             if nodeId == destination.id && node.foodstuffs.length && node.souvenirs.length
+              .col-xs-12
+                h3 Things to eat in the itinerary
+                each activity,index in node.foodstuffs
+                   div(class= "col-sm-2 col-xs-6 activity-tile")
+                     .activity(itemprop='object' itemscope itemtype="http://schema.org/Thing")
+                       .thumb
+                         if counter == 0
+                           img( itemprop='image' src="#{activity.thumb_url}" alt="#{activity.name}")
+                         else
+                           img( itemprop='image' src="" data-src="#{activity.thumb_url}" alt="#{activity.name}")
+                       .detail
+                         h4.text-center.ellipsis(itemprop='name' title="#{activity.name}") #{activity.name}
+              .col-xs-12
+                h3 Things to buy in the itinerary
+                each activity,index in node.souvenirs
+                   div(class= "col-sm-2 col-xs-6 activity-tile")
+                     .activity(itemprop='object' itemscope itemtype="http://schema.org/Thing")
+                       .thumb
+                         if counter == 0
+                           img( itemprop='image' src="#{activity.thumb_url}" alt="#{activity.name}")
+                         else
+                           img( itemprop='image' src="" data-src="#{activity.thumb_url}" alt="#{activity.name}")
+                       .detail
+                         h4.text-center.ellipsis(itemprop='name' title="#{activity.name}") #{activity.name}
+         -totalDays = Math.ceil(totalTime / 24)
+         -start_date = req.app.get('moment')(result.preferences.start_date, 'MM/DD/YYYY').format('ll')
+         -end_date = req.app.get('moment')(result.preferences.start_date, 'MM/DD/YYYY').add(totalDays, 'days').format('ll')
+
+mixin renderSuggestedRoutes(routes, is_suggested, source, destination)
+  each route_node, counter in routes
+    -travelExpense = 0
+    -roamingExpense = 0
+    -totalTime = 0
+    -totalDistance = 0
+    -wayPoint = source.slug + '~'
+    div(class="card row itinerary")
+
+      .js-routeBlock.route-block
+        .text-center.col-xs-12
+          - routeId = []
+          each node, index in route_node.node_names
+            h2.node_name(itemprop="location" itemscope itemtype="http://schema.org/Place")
+              span(itemprop="name") #{node}
+            - connection = route_node.route[index]
+            if(connection)
+              - routeId.push(connection.id)
+              .connection
+                h3 #{connection.name}
+                if connection.distance
+                  div Distance: #{connection.distance} kms
+                if connection.travel_time
+                  div Est. Time: #{connection.travel_time} hours
+                div Approx expense: &#8377;#{connection.expense}
+                .transport
+                  mixin paintIcon(connection.transport.slug, {fill:'#333'})
+              -totalDistance += 2*connection.distance
+              -travelExpense +=  2*connection.expense
+              -totalTime +=  2*parseFloat(connection.travel_time)
+
+      .summary-block.col-xs-12
+        .row
+          .col-sm-8
+            h4 Trip Summary*
+            .col-sm-5 &#8377;#{travelExpense}  | &nbsp;
+              span(itemprop="distance") #{totalDistance} kms
+          if destination.get_quote
+            .col-sm-4.text-right
+              form.js-validate-form
+                input.form-control(type="hidden"  name="routeId" value="#{routeId}")
+                input.form-control(type="hidden"  name="destination" value="#{result.destination.id}")
+                input.form-control(type="hidden"  name="source" value="#{result.source.id}")
+                .input-group
+                  input.form-control(type="text" placeholder="myname@gmail.com" name="email" data-validate="empty, email" data-fieldType="email")
+                  span.btn.btn-primary.input-btn.js-getQuote.js-validate-submit.tr-getItinerary(type="button") Get Quote
+          .col-xs-12
+            //a(target='_blank' href="") View on map
+            div
+              small *Prices includes only travel expenses and may vary with preferences.
+

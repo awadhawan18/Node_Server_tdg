@@ -1,0 +1,110 @@
+- dealDate = new Date();
+- todayDeal = dealDate.getDate()%2 ==0? 'tour/trekking-and-camping-at-triund-mcleodganj' : 'tour/camping-and-rafting-in-rishikesh'
+
+if headerDark
+  header.header.row.dark
+    .content-wrapper
+      .col-xs-6.col-sm-2
+        a.home-icon(href='/' title="travel d\'globe | Home")
+          img(src="#{static}/resources/images/logo/traveldglobe-white.png" alt="travel d\'globe | Home")
+          .tag-line New way to Plan Your Trip
+      -if(!hideSearch)
+        .search-box.col-sm-5.hidden-xs
+          a.search-icon(href="#{host}/search")
+            mixin paintIcon('search', {fill:'#fff'})
+          input(type="search" class="form-control js-autoSearch" placeholder="Search the top destinations or things to do,such as Kasol")
+          .loader Searching...
+          .type-ahead.js-typeAhead
+            ul.list
+              li
+                strong Popular Searches
+              li
+                a(href='#{host}/search/?query=kasol') Kasol, The Leisure Valley
+              li
+                a(href='#{host}/search/?query=Himachal+Pradesh+') Himachal Pradesh
+              li
+                a(href='#{host}/search/?query=Trekking') Trekking
+      .col-xs-6.col-sm-5.text-right
+        a.light.tr-hbtn.hidden-xs(href="#{host}/tour" title="Best tour deals") Tours
+        a.light.tr-hbtn.hidden-xs(href="#{host}/#{todayDeal}" title="Today's Travel Offer") Today's Offer
+        if user
+          .header-menu
+            span.hidden-xs Hi #{user.user_name}
+            .login-icon.no-flag(href="/auth/facebook?returnUrl=#{req.url}")
+              mixin paintIcon('traveller', {fill:'#fff',size: {y : '35',x : '20'}, strokeWidth:2})
+            .drop-menu
+              ul.menu
+                li.visible-xs Hi #{user.user_name}
+                  a
+                li
+                  a(href='/tour') Popular Tours
+                li
+                  a(href='/trip') Travel With Strangers
+                li
+                  a(href='/traveller/#{user.slug}')  My profile and stories
+                li
+                  a(href="/user/logout?returnUrl=#{req.url}")  Log out
+          script.
+            var lgud = {userName:'#{user.user_name}',userEmail:'#{user.email}', userMobile: '#{user.mobile}'};
+        else
+          a.tr-login.light(href="/auth/facebook?returnUrl=#{req.url}")
+            span Login&nbsp;
+            span.hidden-xs with Facebook
+            .login-icon
+              mixin paintIcon('traveller', {fill:'#fff',size: {y : '35',x : '20'}, strokeWidth:2})
+          script.
+            var lgud = {};
+else
+  header.header.row
+    .content-wrapper
+      .col-xs-6.col-sm-2
+        a.home-icon(href='/' title="travel d\'globe | Home")
+          img(src="#{static}/resources/images/logo/traveldglobe-red.png" alt="travel d\'globe | Home")
+          .tag-line New way to Plan Your Trip
+      -if(!hideSearch)
+        .search-box.col-sm-5.hidden-xs
+          a.search-icon(href="#{host}/search")
+            mixin paintIcon('search', {fill:'#333333'})
+          input(type="search" class="form-control js-autoSearch" placeholder="Search the top destinations or things to do,such as Kasol")
+          .loader Searching...
+          .type-ahead.js-typeAhead
+            ul.list
+              li
+                strong Popular Searches
+              li
+                a(href='#{host}/search/?query=kasol') Kasol, The Leisure Valley
+              li
+                a(href='#{host}/search/?query=Himachal+Pradesh+') Himachal Pradesh
+              li
+                a(href='#{host}/search/?query=Trekking') Trekking
+
+      .col-xs-6.col-sm-5.text-right
+        a.btn.btn-ghost.dark.tr-hbtn.hidden-xs(href="#{host}/tour" title="Best tour deals") Tours
+        a.btn.btn-ghost.dark.tr-hbtn.hidden-xs(href="#{host}/#{todayDeal}" title="Today's Travel Offer") Today's Offer
+        if user
+          .header-menu
+            span.hidden-xs Hi #{user.user_name}
+            .login-icon.no-flag(href="/auth/facebook?returnUrl=#{req.url}")
+              mixin paintIcon('traveller', {size: {y : '35',x : '20'}, strokeWidth:2})
+            .drop-menu
+              ul.menu
+                li.visible-xs Hi #{user.user_name}
+                  a
+                li
+                  a(href='/tour') Popular Tours
+                li
+                  a(href='/trip') Travel With Strangers
+                li
+                  a(href='/traveller/#{user.slug}')  My profile and stories
+                li
+                  a(href="/user/logout?returnUrl=#{req.url}")  Log out
+          script.
+            var lgud = {userName:'#{user.user_name}',userEmail:'#{user.email}', userMobile: '#{user.mobile}'};
+        else
+          a.tr-login(href="/auth/facebook?returnUrl=#{req.url}")
+            span Login&nbsp;
+            span.hidden-xs with Facebook
+            .login-icon
+              mixin paintIcon('traveller', {size: {y : '35',x : '20'}, strokeWidth:2})
+          script.
+            var lgud = {};

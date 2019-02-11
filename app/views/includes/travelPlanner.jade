@@ -1,0 +1,58 @@
+.planner.hidden-xs
+   .action-tag.close  Close
+   .gear
+      //icon
+      div Plan Your Trip
+   .planner-form
+      h3.text-center Know Where To Go
+      .filter-section
+         h4 I am travelling from:
+         .row
+            .col-sm-6
+               .selection-slot.selected.js-field(data-field="source" data-value="new-delhi") New Delhi
+            .col-sm-6
+               .selection-slot.js-field(data-field="source" data-value="bangalore") Bangalore
+            .col-sm-6
+               .selection-slot.js-field(data-field="source" data-value="mumbai") Mumbai
+            .col-sm-6
+               .selection-slot.js-field(data-field="source" data-value="kolkata") Kolkata
+
+      .filter-section
+         h4 Travelling as/with
+         ul.journey-items
+            li.selected.js-field(data-field="traveling_with" data-value="friends")
+               mixin  paintIcon('friends', {fill: "#909090", "stroke":'none', size: {y : '40',x : '46'}})
+               div
+                  small Friends
+            li.js-field(data-field="traveling_with" data-value="couple")
+               mixin paintIcon('couple', {fill: "#909090", "stroke":'none', size: {y : '40',x : '46'}})
+               div
+                  small Love
+            li.js-field(data-field="traveling_with" data-value="solo")
+               mixin paintIcon('solo', {fill: "#909090", "stroke":'none', size: {y : '40',x : '46'}})
+               div
+                  small Solo
+            li.js-field(data-field="traveling_with" data-value='family')
+               mixin paintIcon('family', {fill: "#909090", "stroke":'none', size: {y : '40',x : '46'}})
+               div
+                  small Family
+      .filter-section
+         h4 Duration:
+            .row
+               .col-sm-3
+                  .selected.selection-slot.js-field(data-field="time" data-value="2") 2 days
+               .col-sm-3
+                  .selection-slot.js-field(data-field="time" data-value="3") 3 days
+               .col-sm-3
+                  .selection-slot.js-field(data-field="time" data-value="4") 4 days
+               .col-sm-3
+                  .selection-slot.js-field(data-field="time" data-value="5") 5 days
+      .filter-section
+         h4 Budget
+         label.selected.selection-slot.js-field(data-field="budget" data-value="economy") Economy
+         label.selection-slot.js-field(data-field="budget" data-value="moderate") Moderate
+         label.selection-slot.js-field(data-field="budget" data-value="luxury") Luxury
+      br
+      br
+      .text-center
+         a.btn.btn-primary.lg.js-plan(href="#" title="Start Planning My Trip") Start Planning My Trip

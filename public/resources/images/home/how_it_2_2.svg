@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" height="132px" width="252px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 252 132"><!-- Generator: Sketch 3.3.1 (12005) - http://www.bohemiancoding.com/sketch -->
+ <title>icons</title>
+ <desc>Created with Sketch.</desc>
+ <g id="Welcome" fill-rule="evenodd" sketch:type="MSPage" fill="none">
+  <g id="Home-Page-Copy-2" transform="translate(-608 -1161)" sketch:type="MSArtboardGroup">
+   <g id="Group-Copy" transform="translate(576 1063)" sketch:type="MSLayerGroup">
+    <g id="Group" sketch:type="MSShapeGroup" transform="translate(119.74 127)">
+     <ellipse id="Oval-2" rx="44.565" cy="65.135" ry="14.073" stroke="#979797" cx="44.565" fill="#D8D8D8"/>
+     <ellipse id="Oval-2-Copy" rx="16.948" cy="64.349" ry="6.9211" stroke="#979797" cx="44.941" fill="#fff"/>
+     <g id="marker-copy-2" transform="translate(19.258)">
+      <path id="Path-3-Copy" fill="#F04633" d="m8.808 41.686c-6.3712-12.606-11.359-18.203-7.3595-27.709 3.9996-9.5067 11.416-13.151 21.972-12.817 10.555 0.3336 17.647 6.4226 20.676 14.037 3.029 7.615-2.72 16.414-7.447 26.489-5.254 11.196-9.13 22.58-13.229 22.58s-8.241-9.975-14.612-22.58z"/>
+      <ellipse id="Oval-1-Copy" rx="9.7811" ry="9.1568" cy="20.997" cx="23.307" fill="#fff"/>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

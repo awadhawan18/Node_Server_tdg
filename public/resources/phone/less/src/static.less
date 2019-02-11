@@ -1,0 +1,71 @@
+@import '../variables';
+
+// styles for the static pages
+
+.static-container {
+  .static-title {
+    background: @pallet-background-static;
+    padding: 5*@padding-large 0;
+    color:@pallet-color-light;
+    margin-bottom: @margin-medium;
+    font-size: 36px;
+    font-weight: 900;
+    line-height:30px;
+    h1 {
+      font-size: 36px;
+      font-weight: 900;
+    }
+  }
+}
+
+.static-header {
+  background: url('/resources/images/travel-of-globe.jpg') no-repeat;
+  position: relative;
+  background-size: cover;
+  background-position: 0 0;
+
+  .static-title {
+    text-align: center;
+    padding: 10*@padding-large 0;
+    color: @pallet-color-light;
+    margin-bottom: @margin-medium;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.2;
+    position: relative;
+    z-index: @index-floor;
+
+  }
+  &:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: fade(@pallet-background-footer, 30%);
+    width: 100%;
+    display: inline-block;
+    content: '';
+    z-index: @index-ground;
+  }
+}
+ol{
+  li {
+    margin-bottom: @margin-large;
+  }
+}
+
+.team-icon {
+  border: 1px solid @pallet-border-primary;
+  border-radius: 100%;
+  display: inline-block;
+  padding: 15px;
+  width: 140px;
+  margin-right: 15px;
+  height: 140px;
+  text-align: center;
+}
+
+@media(max-width: @screen-xs) {
+  .static-header {
+    background-position: 0 0;
+  }
+}

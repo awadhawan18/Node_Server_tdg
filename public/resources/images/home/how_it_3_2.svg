@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns="http://www.w3.org/2000/svg" height="132px" width="252px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 252 132"><!-- Generator: Sketch 3.3.1 (12005) - http://www.bohemiancoding.com/sketch -->
+ <title>icons</title>
+ <desc>Created with Sketch.</desc>
+ <g id="Welcome" fill-rule="evenodd" sketch:type="MSPage" fill="none">
+  <g id="Home-Page-Copy-2" transform="translate(-1048 -1166)" sketch:type="MSArtboardGroup">
+   <g id="Group-Copy-2" transform="translate(955 1103)" sketch:type="MSLayerGroup">
+    <g id="Itinerary" sketch:type="MSShapeGroup" transform="translate(155.03 91)">
+     <path id="Path-15" stroke="#000" stroke-width="4" stroke-dasharray="2" d="m8.0749 81.278c30.427-18.113 106.16-5.386 106.44-18.113 0.29-12.728-81.476-12.064-85.252-19.646-1.667-3.346 11.493-9.731 26.688-14.429 19.235-5.946 41.628-7.895 41.628-7.895"/>
+     <ellipse id="Oval-21" rx="9.2861" cy="81.552" ry="6.3087" stroke="#858059" cx="9.2861" fill="#EAC29B"/>
+     <path id="Line" stroke="#000" stroke-width="3" stroke-linecap="square" d="m100.53 1.0405v21.03"/>
+    </g>
+   </g>
+   <path id="Path-215" sketch:type="MSShapeGroup" fill="#FF3232" d="m1212.5 1193.1l14.6 6.7-14.8 6.5 0.2-13.2z"/>
+  </g>
+ </g>
+</svg>

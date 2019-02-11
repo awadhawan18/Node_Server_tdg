@@ -1,0 +1,56 @@
+//
+   Created by Himanshu wolf on 20/10/15.
+
+extends ../layouts/default
+
+append vars
+   - dtLyr.pageType = req.app.get('pageConstants').POLICIES.identifier
+block css
+   style
+      include ../../public/resources/css/static.css
+
+block mainContent
+   .row
+      .static-header
+         h1.static-title Traveller Policies
+      .content-wrapper
+         .col-xs-12(id="tnc")
+            h3 General Terms and Condition
+            ul
+               li The primary traveller must be at least 18 years of age or accompanied by the guardian.
+               li It is mandatory to present valid photo identification at the time of booking confirmation. According to government regulations, a valid Photo ID has to be carried by every person above the age of 18 staying at the hotel. The identification proofs accepted are Driving License, Voter ID Card, and Passport. Without valid ID the guest will not be allowed to check-in.
+               li PAN cards are not accepted as a valid ID card.
+               li Travel of 1 child up to 5 years of age is complementary without the use of extra seat in vehicle or mattress at stay.
+               li Pets are not allowed in the vehicles or hotel premises.
+               li Should any action by a traveller be deemed inappropriate by the driver or host, or if any inappropriate behaviour is brought to the attention of the host, the host reserves the right, after the allegations have been investigated, to take action against the traveller.
+               li Any changes in the travel will subjected to our cancellation policy.
+
+               li Certain destinations may have different policies for specific times during the year.
+               li Travellers shall be liable for any damage, except normal wear and tear to assets of the host. Travellers shall keep the host's asset in a good condition and maintain hygiene and cleanliness.
+
+               li  Certain policies are booking specific and are informed to the customer while making the booking.
+
+         .col-xs-12(id="cancellation")
+            h3 Cancellation Policy
+            div Cancelling any booking or outdoor is easy and smooth.
+
+            div We would love to make your travel happen, however, if you have changed your plans then our simple process of cancellation will smoothly return your money back within 24 hours.
+
+            table
+               thead
+                  th Cancellation Time
+                  th Cancellation Fee
+               tr
+                  td Before 15 days
+                  td Zero
+               tr
+                  td Before 48 hours
+                  td 25%
+               tr
+                  td Just in Time
+                  td 50%
+
+
+   a.bottom-cover(href="#{host}/countries" title="explore all locations")
+      img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+

@@ -1,0 +1,133 @@
+extends ../layouts/default
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').TRAVEL_QUIZ.identifier
+  - noIndex = true
+block css
+  link(type="text/css" rel="stylesheet" href="#{static}/resources/css/static.css")
+block mainContent
+  .row
+    .static-header
+      h1.static-title Know your travel type
+    .content-wrapper.sm
+      .col-xs-12
+        .know-travel-type
+          .caption
+            span.js-tabCount 1
+            span &nbsp; of 6
+          .js-question.question-set.card.show(tab-index=1)
+            h2.question Your group needs a travel plan
+            .options
+              label.option Oh yes! I will make it
+                input(type="radio" name="excitement" value="high")
+              label.option I will push others to do it
+                input(type="radio" name="excitement" value="medium")
+              label.option We will go without plan
+                input(type="radio" name="excitement" value="low")
+
+          .js-question.question-set.card(tab-index=2)
+            h2.question You have space to either pack grooming kit or camera
+            .options
+              label.option I do not need camera, my phone is enough
+                input(type="radio" name="packerType" value="photographer")
+              label.option I will skip to groom, but I need the camera
+                input(type="radio" name="packerType" value="leisure")
+              label.option I will take out other stuff and create more space
+                input(type="radio" name="packerType" value="traveller")
+
+
+          .js-question.question-set.card(tab-index=3)
+             h2.question Which is your favourite accommodation?
+             .options
+               label.option I love Camps
+                  input(type="radio" name="stay" value="camp")
+               label.option A clean and luxury Hotel
+                  input(type="radio" name="stay" value="hotel")
+               label.option A Hostel with travellers around the world
+                  input(type="radio" name="stay" value="hostel")
+
+          .js-question.question-set.card(tab-index=4)
+            h2.question You are at a place with the sheer beauty of nature, land, mountains or sea
+            .options
+              label.option I will click as many photos
+                input(type="radio" name="natureLove" value="photographer")
+              label.option I will relax and enjoy the view
+                input(type="radio" name="natureLove" value="like")
+              label.option I would not leave, unless I am asked to go
+                input(type="radio" name="natureLove" value="trueLove")
+
+          .js-question.question-set.card(tab-index=5)
+            h2.question You are travelling to a destination first time, what will you do at first
+            .options
+              label.option Will eat the most famous food
+                input(type="radio" name="travelHabit" value="foodie")
+              label.option Try to meet people and make friends
+                input(type="radio" name="travelHabit" value="friendMaker")
+              label.option Just roam around the city to explore
+                input(type="radio" name="travelHabit" value="explorer")
+
+          .js-question.question-set.card(tab-index=6)
+            h2.question When you come back from vacations
+            .options
+              label.option I relax and get lot of rest
+                input(type="radio" name="energyLevel" value="low")
+              label.option I get on to make albums out of my pics
+                input(type="radio" name="energyLevel" value="medium")
+              label.option I write my experience on my travel blog
+                input(type="radio" name="energyLevel" value="high")
+
+
+
+
+        .fb-like(data-href="https://www.facebook.com/traveldglobe" data-layout="standard" data-action="like" data-show-faces="true" data-share="false")
+  div(id="fb-root")
+  a.bottom-cover(href="#{host}/countries" title="explore all locations")
+    img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+
+block js
+  script.
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1151322284897579";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    (function(window, document, $) {
+      var el = {
+        questionSet : '.js-question',
+        $tabIndex : $('.js-tabCount'),
+        $input : $('.option input')
+      };
+      var recordResult = function() {
+        result = {};
+        result.energyLevel = $('input[name="energyLevel"]:checked').val();
+        result.packerType = $('input[name="packerType"]:checked').val();
+        result.stay = $('input[name="stay"]:checked').val();
+        result.natureLove = $('input[name="natureLove"]:checked').val();
+        result.travelHabit = $('input[name="travelHabit"]:checked').val();
+        result.excitement = $('input[name="excitement"]:checked').val();
+        return result;
+      }
+
+      el.$input.on('click', function() {
+        var $this, $questionSet, tabIndex;
+        $this = $(this);
+        $questionSet = $($this.parents(el.questionSet));
+
+        tabIndex = parseInt($questionSet.attr('tab-index')) + 1;
+
+        if(tabIndex >6) {
+          console.log(recordResult());
+          console.log('show result')
+          return;
+        }
+        el.$tabIndex.html(tabIndex);
+        $questionSet.removeClass('show');
+        $('[tab-index= "'+tabIndex+'"]').addClass('show');
+
+      })
+
+
+    })(window, document, jQuery)

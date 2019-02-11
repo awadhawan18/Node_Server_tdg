@@ -1,0 +1,265 @@
+@import url('../variables');
+
+// Choose destination page
+.main-content {
+  background: @pallet-background-primary;
+}
+.card {
+  padding: @padding-large @padding-base;
+}
+
+.node_name {
+  font-weight: 700;
+  font-size: @font-large;
+  float: left;
+}
+
+
+.connection {
+  position: relative;
+  float:left;
+  margin: 0 2*@margin-large;
+  padding: 0 2*@margin-large;
+
+  &:before {
+    width: 120%;
+    content: '';
+    display: inline-block;
+    border: 2px dashed @pallet-theme;
+    position: relative;
+    left: -8%;
+    top: 20px;
+    margin-bottom: 2*@margin-large;
+  }
+  .transport {
+    position: absolute;
+    top: -20px;
+    right: 50%;
+    transform: translateX(50%);
+    -webkit-transform: translateX(50%);
+  }
+
+}
+
+.itinerary {
+  padding-top: 2*@padding-large;
+
+  .route-block {
+    cursor: pointer;
+    padding-top: 150px;
+  }
+
+  .more {
+    margin-top: @margin-large;
+    opacity: 1;
+    transition: all 0.5s 0s ease-out;
+  }
+
+  .arrow {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid @pallet-color-subtle;
+    border-top-width: 0;
+    border-left-width: 0;
+    transform: rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);
+  }
+
+  .content {
+    min-height: 300px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .route-section {
+    margin-bottom: @margin-large;
+    .color-title {
+      margin-bottom: @multiplier-medium*@margin-large;
+    }
+  }
+
+  .todo-list {
+    padding-bottom: @padding-medium;
+    margin-bottom: @margin-medium;
+  }
+
+  .summary-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-height: 140px;
+    padding: @padding-medium;
+    background: @pallet-background-secondary;
+  }
+}
+.activity-tile {
+  transition: all 0.5s .5s ease-out;
+
+  &.squeeze {
+    transform: scaleX(0) rotateY(360deg);
+    width: 0;
+    padding: 0;
+    margin: 0;
+    visibility: hidden;
+  }
+  &.thumb-hide {
+    display: none;
+  }
+}
+
+.activity-list {
+
+  .activity {
+    position: relative;
+    border: 1px solid @pallet-border-secondary;
+    background: darken(@pallet-background-primary, 5%);
+    margin-bottom: @margin-medium;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 1;
+      z-index: @index-floor;
+      background: rgba(0,0,0,.2);
+      transition: all 0.3s 0s ease-out;
+    }
+
+    &.selected {
+      background: @pallet-background-light;
+
+      &:before {
+        top: -100%;
+        bottom: 100%
+      }
+      &:after {
+        content: '\2713 ';
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        text-align: center;
+        opacity: 1;
+        z-index: @index-floor;
+        background: @pallet-background-selected;
+        color: @pallet-color-light;
+      }
+    }
+  }
+  .thumb-hide {
+    display: block;
+  }
+
+}
+
+//TODO: move to common
+.markers {
+  text-align: center;
+  padding: @padding-large;
+
+  * {
+    display: inline-block;
+  }
+  .point {
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      background: @pallet-background-static;
+      position: relative;
+      margin-bottom: @margin-base;
+      top: -10px;
+    }
+  }
+  .source {
+    margin-right: -@margin-large;
+
+    &:before {
+      left: 35px;
+    }
+
+  }
+  .path {
+    width: 40%;
+    max-width: 300px;
+    border: 2px solid @pallet-theme;
+    position: relative;
+    top: -20px;
+
+  }
+  .destination {
+    margin-left: -3*@margin-medium;
+
+    &:before {
+      left: 40px;
+    }
+  }
+}
+
+#map-canvas {
+  height: 400px;
+  width: 100%;
+}
+
+.vertical-itinerary {
+  .column {
+    margin-top: @margin-base;
+    height: 600px;
+    overflow: auto;
+    position: relative;
+    .quote-form {
+      position: fixed;
+      width: 360px;
+      right: 0;
+      top: 110px;
+      z-index: @index-ground;
+      background: @pallet-background-light;
+      padding: @padding-large;
+      box-shadow: 0 0 2px 1px @pallet-border-primary;
+    }
+  }
+  .itinerary {
+    padding-top: @padding-medium;
+  }
+  .node_name {
+    float: none;
+  }
+
+  .connection {
+    position: relative;
+    font-size: @font-small;
+    margin: 0 @margin-large;
+    padding: 0 @margin-large;
+    float: none;
+
+    &:before {
+      width: 2px;
+      height: 100%;
+      content: '';
+      display: inline-block;
+      border: 2px dashed @pallet-theme;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+    }
+    .transport {
+      position: static;
+      transform: translateX(0);
+      -webkit-transform: translateX(0);
+    }
+
+  }
+}

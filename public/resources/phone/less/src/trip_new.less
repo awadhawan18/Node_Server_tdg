@@ -1,0 +1,242 @@
+@import url('../variables');
+@import '../mixins/allMixin';
+
+
+//Listing style
+.product-tile {
+  display: block;
+  .card {
+    min-height: 385px;
+  }
+  &:hover {
+    img {
+      transform: scale(1.1,1.1);
+    }
+  }
+
+}
+.price {
+  font-size: @font-large;
+  margin: @margin-base 0;
+  color:@pallet-color-primary;
+  .offer {
+    color: @pallet-color-important;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: @margin-base;
+  }
+  .base-price {
+    text-decoration: line-through;
+    font-size: 0.8em;
+    display: inline-block;
+  }
+  small {
+    font-size: 0.7em;
+  }
+}
+
+
+.img-card {
+  box-shadow: 0 0 0 1px @pallet-border-primary;
+  margin: @margin-medium 0;
+  position: relative;
+
+  .title-bar {
+    position: absolute;
+    font-size: 0.8em;
+    z-index: @index-floor;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 @padding-large;
+    background: fade(@pallet-background-footer, 70%);
+    color: @pallet-color-light;
+  }
+}
+
+.bullets {
+  .point {
+    margin-bottom: @margin-medium;
+    font-weight: bold;
+  }
+}
+
+.brick {
+  padding: @padding-base @padding-medium;
+  margin: @margin-base @margin-medium;
+  border: 2px solid @pallet-border-primary;
+  background: @pallet-background-secondary;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.inclusions {
+  .brick {
+    border-color: @color-inclusion;
+  }
+}
+.exclusions {
+  .brick {
+    border-color: @color-exclusion;
+  }
+}
+
+
+
+form.booking-form {
+  transition: all 0.3s 0s ease-out;
+  margin: 0 @margin-large;
+  .form-item {
+    margin: @margin-medium 0;
+  }
+}
+
+label {
+  display: block;
+  font-weight: 400;
+}
+
+.shares {
+  display: block;
+  margin: @margin-medium 0;
+}
+.share-link {
+  background: darken(@pallet-background-secondary, 3%);
+  padding: 7px;
+  border-radius: 20px;
+  margin: 0 @margin-base;
+  transition: all 0.3s 0s ease-out;
+  display: inline-block;
+
+  &.facebook {
+    background: @social-color-facebook;
+    &:hover {
+      background: darken(@social-color-facebook, 5%);
+    }
+  }
+  &.twitter {
+    background: @social-color-twitter;
+    &:hover {
+      background: darken(@social-color-twitter, 5%);
+    }
+  }
+
+}
+h2 {
+  color: @pallet-color-invert;
+  margin-bottom: @margin-large;
+}
+h3 {
+  font-size: @font-large;
+  font-weight: 600;
+  &.detail-heading {
+    color: @pallet-color-heading;
+  }
+}
+
+.trip-tags {
+  margin: @multiplier-medium*@margin-large 0;
+  .tag {
+    display: block;
+    vertical-align: top;
+    margin-bottom: @margin-large;
+
+    .bulb {
+      display: inline-block;
+      margin-right: @margin-base;
+    }
+    .name {
+      display: inline-block;
+      color: @pallet-color-subtle;
+    }
+  }
+}
+
+.itinerary-content {
+  position: relative;
+
+  .content {
+    max-height: 360px;
+    transition: all 0.3s 0s ease-out;
+    overflow: hidden;
+  }
+  .show-more {
+    background: linear-gradient(180deg, rgba(100,100,100,0.55), @pallet-background-footer);
+    position: absolute;
+    cursor: pointer;
+    opacity: 1;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    height: 45px;
+    margin-top: -45px;
+    padding: @padding-medium @multiplier-medium*@padding-medium;
+    font-weight: bold;
+    color: @pallet-color-hover;
+  }
+  &.open {
+    .content {
+      max-height: 2000px;
+    }
+    .show-more {
+      opacity: 0;
+    }
+  }
+}
+
+.brick {
+  padding: @padding-base @padding-medium;
+  margin: @margin-base @margin-medium;
+  border: 2px solid @pallet-border-primary;
+  display: inline-block;
+}
+
+.inclusions {
+  .brick {
+    border-color: @color-inclusion;
+  }
+}
+.exclusions {
+  .brick {
+    border-color: @color-exclusion;
+  }
+}
+
+.ticks {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  text-align: center;
+  background: @pallet-background-selected;
+  color: @pallet-color-light;
+  margin-right: @margin-base;
+  vertical-align: text-top;
+
+  &:after {
+    content: '\2713 ';
+    position: relative;
+    top: -3px;
+  }
+}
+
+.why-travel {
+  .why-section {
+    margin-bottom: @multiplier-medium*@margin-large;
+    border-bottom: 1px solid fade(@pallet-border-primary, 20%);
+  }
+  .inline-block {
+    margin-left: @margin-medium;
+
+  }
+}
+
+.book-btn {
+  position: fixed;
+  z-index: @index-space;
+  box-shadow: 1px 1px 1px 1px @pallet-border-secondary;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: @padding-medium;
+}

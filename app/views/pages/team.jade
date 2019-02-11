@@ -1,0 +1,43 @@
+extends ../layouts/default
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').TEAM.identifier
+block css
+  style
+    include ../../public/resources/css/static.css
+block mainContent
+  .row
+    .static-header
+      h1.static-title Join the team TDG
+    .content-wrapper
+      .col-xs-12
+        .text-center
+          .team-icon
+            mixin paintIcon('traveller', {size: {y : '100',x : '70'}, strokeWidth:2})
+          .team-icon
+            mixin paintIcon('ninja')
+        h2.text-center.highlight.title Learn how small team makes big difference
+        p We are always hunting the people who loves to travel and can work like a ninja(Sharp and Fast).
+        p To join the team TDG do not send us your resume, they do not reflect what you want to be. Instead, share a passionate story of your travelling and tell how travel d'globe has helped you find the next travel destination.
+
+        h2.text-center.highlight.title Places our co-founders have travelled
+        h4 Cities or Towns
+        p Rishikesh, Manali, Mcleodganj, Dehradun, Mussorie, Kasol, Kaza, Sangla, Chitkul, Shimla, Kasauli, Sarhan, Kalpa, Kibber, Jaipur, Alwar, Bhangarh, Mandi, Badrinath, Ranthanmbore, Mathura, Vrindavan, Chennai, Pune, Bangalore, Mysore, Mahabalipuram, Kathmandu, Amritsar, Shravanbelgola, Haridwar, Pondicherry, Great Himalayan National Park, Jodhpur, Kullu, Bhopal
+        h4 Treks and Adventures
+        p Triund Trek, River rafting in Ganga, Hampta Pass Trek, Chandratal, Kutla Trek, Jalori Pass trek, Rohtang Pass, Road trip to Spiti, Bike riding, Roopkund Trek, Prashar Trek
+        p Feel free to reach us at&nbsp;
+          a.link(href="mailto:hello@traveldglobe.com") hello@traveldglobe.com&nbsp;
+          span we would be pleased to help you out any travel related question.
+        p Spread the love for travel
+          .fb-like(data-href="https://www.facebook.com/traveldglobe" data-layout="standard" data-action="like" data-show-faces="true" data-share="false")
+  div(id="fb-root")
+  a.bottom-cover(href="#{host}/countries" title="explore all locations")
+    img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+  script.
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1151322284897579";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));

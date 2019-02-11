@@ -1,0 +1,107 @@
+
+extends ../layouts/default
+
+append vars
+   - dtLyr.pageType = req.app.get('pageConstants').WHY_CHOOSE_US.identifier
+   - showTrip = true
+   - showChat = true
+block css
+   style
+      include ../../public/resources/css/static.css
+
+block mainContent
+   .row
+      .static-header
+         h1.static-title Why Choose travel d'globe
+      .content-wrapper
+         .col-xs-12
+            h2.color-title Supermarket of travel
+            p One stop shopping place where you can compare prices of different operators and choose the best trip services as per your budget. You will find the budget tours as we directly bring them from the local tour operators with safety and service assurance from travel d'globe.
+            h2.color-title Assured Standards
+            p The standards of the operators are managed and assured by travel d'globe. To give you the hassle free travel experience in your trip, we bring the best tour operators. In addition to that our team brings the excellent service quality for you and your co-travellers
+            h2.color-title Money Safe Guarantee
+            p Book online to keep your money safe. After booking and before your trip ends, your money will be safe with us for anytime. We take care of your money unlike any tour operator or travel agent.
+            h2.color-title Special Customer Service
+            p The travel agents, whether online or offline, inclined on just selling the travel deals. However, we at traveldglobe understand the needs of traveller and provide them a exemplary customer service after booking with us. We keep the customer's happiness as our top priority. You just have to book your trip and we will take care of everything else.
+            h2.color-title Breaking the Monopoly
+            p Our tours plans have different operators for you to choose the best among them. Monopoly cannot be created by any operator by charging high since he will be competing with the services of others as well
+         .col-xs-12
+            h2.color-title Zero Stress of Travel Planning
+            p End your stress of travel planning, we will help you get the best deal with our 150+ travel partners. Your trip and itinerary will match your preferences, dates and fitness. We will guide you to find out the best destinations to travel and fulfil our commitment to find where to go. The unexpected travel hiccups will be away because you choose the best travel planners.
+            h2.color-title Zero Booking or Assistance fees
+            p We do not charge anything for our help. No additional booking fees, you will just need to pay the booking amount and advance to confirm. We do not keep any hidden charges, you will get the fair and the best price on your travel deals.
+            h2.color-title Descriptions and Details verified by travellers and natives
+            p You can completely trust on every description and travel detail on traveldglobe.com. The only travel website where the content is verified with people who have been to the destinations, moreover, with the help of local natives, we refined our content to provide the most accurate piece of information to every traveller.
+            h2.color-title Reduce the time to plan with Expert Help
+            p You will not need to compare so many destinations and travel deals. That will end up consuming your time that you would invest in thinking of enjoying the trip. Save your time using our recommendation bot 'MARCO' or get a direct talk from our team who will plan your next travel in minutes.
+            h2.color-title Turn Strangers to Friends on our trips
+            p With&nbsp;
+               a.link(hef="#{host}/trip") our social trips&nbsp;
+               span you have this great chance to meet the like minded traveller and get to make some new friends. Those friends will share the same passion as yours i.e. travelling. That short interaction will be extremely rich and warm, and this new experience will boost your love for travel. Travelling after all is best enjoyed when your make new friends.
+
+
+            h2 What we do..
+            p As per our interviews with the regular travellers, they always keep dribbling among a set of destinations. We have created a mixture of adventure and enthusiasm filled places that a traveler, wanderer or a explorer looks for.
+            p Our&nbsp;
+               a.link(href="#{host}/find-places/from--new-delhi?traveling_with=friends&travel_time=5") travel recommendation bot, 'MARCO'&nbsp;
+               span and our connected graph will end your problems whether you look for travel agents, ask your friends, to where to go. We ease out your exploration on the web, with our creative and precise information.
+            p Choosing the destination is the first step, after that you can get personalized itineraries, book plans or join us on trips.
+            .row
+               .col-sm-4
+                  a.card.round.what-we-do.where.light(href="#{host}/countries" title="All locations")
+                     .content
+                        mixin paintIcon('map_marker_white', {fill:'#FCFCFC', size: {x:100,y:100}})
+                        h4 Where to Go?
+                        .small 14 countries, 250 locations
+               .col-sm-4
+                  .card.round.what-we-do.how
+                     .content
+                        mixin paintIcon('route', {size: {x:100,y:100}})
+                        h4 How to reach there?
+                        .small 15,000+ routes
+               .col-sm-4
+                  a.card.round.what-we-do.plan.light(href="#{host}/trip" title="Social outdoor trips")
+                     .content
+                        mixin paintIcon('plan_things', {fill:'#FCFCFC', size: {x:100,y:100}})
+                        h4 How to make travel happen?
+                        .small Quote, Plans and Trips
+
+
+
+            h2 Getting started
+            p You can start using travel d'globe by just giving us the start date of journey and the travel time you want to spend, then there you have the best of our exotic destinations.
+            a.btn.btn-primary.lg(href="#{host}" title="Where to go") Where to go
+            p Travel smart and #travelWithTDG
+
+            h2 We are always available
+            p Feel free to reach us at&nbsp;
+               a.link(href="mailto:hello@traveldglobe.com") hello@traveldglobe.com&nbsp;
+               span we would be pleased to help you out any travel related question.
+            p Spread the love for travel
+               .fb-like(data-href="https://www.facebook.com/traveldglobe" data-layout="standard" data-action="like" data-show-faces="true" data-share="false")
+
+   div(id="fb-root")
+   a.bottom-cover(href="#{host}/countries" title="explore all locations")
+      img(src="#{static}/resources/images/travel-with-travel-dglobe.png" alt="the travel of globe")
+   include ../includes/travelPlanner
+
+block js
+   script.
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1151322284897579";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      $(window).on('scroll', function () {
+         if (window.scrollY > 600) {
+            $('.js-roadMap').addClass('display');
+         }
+      });
+
+
+
+
+

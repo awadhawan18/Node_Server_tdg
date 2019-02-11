@@ -1,0 +1,62 @@
+extends ../layouts/default
+
+append vars
+  - dtLyr.pageType = req.app.get('pageConstants').MAP_VIEW.identifier
+block css
+  style.
+    #map-canvas {
+      height: 300px;
+      margin : 0 auto;
+      display: block;
+    }
+    #map-canvas .info-window {
+      position: absolute;
+      top: -50px;
+      left: -25px;
+      white-space: nowrap;
+      padding: 10px;
+      background: #fff;
+      z-index: 400;
+      box-shadow: 0 0 2px 0 #cccccc;
+    }
+
+    #map-canvas .info-window:after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 25px;
+      border: 10px solid;
+      border-color: #ffffff transparent transparent transparent;
+    }
+block mainContent
+
+  - locations = result.locations
+  - markers = []
+  if(locations.length > 0)
+    each location, index in locations
+      - markers.push({lat:location.latitude, lon:location.longitude, activity:false, title:location.name})
+  .row
+    .content-wrapper
+      .col-xs-12
+        h1.text-center Where to go?
+        div(id="map-canvas" style="height: 600px;")
+        p Use the map view to find where to go, it is easy to use. Zoom in your favourite region and take your cursor to the red markers. You will spot the travel destinations and can know where to go.
+
+block js
+  script(src="https://maps.googleapis.com/maps/api/js")
+  script.
+    var showMarkers = !{JSON.stringify(markers)};
+    TDG.initializeMap('map-canvas', showMarkers, {maxZoom: 16, zoom: 5}, true);
+    $('body').on({
+      mouseenter: function() {
+        var info = document.createElement('div');
+        $(this).addClass('show');
+        info.className = 'info-window';
+        info.innerText = $(this).data('title');
+        $(this).append(info);
+      },
+      mouseleave: function() {
+        $(this).find('.info-window').remove();
+        $(this).removeClass('show');
+      }
+    }, '.map-marker');

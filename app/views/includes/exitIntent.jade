@@ -1,0 +1,23 @@
+.exit-intent.js-exitIntent
+   .js-closeIntent.tr-closeIntent.close.action-tag
+   .content
+      .js-first
+         h1 Did you find what you were looking for?
+         .comment
+            textarea.form-control.js-comment(rows=2 placeholder="Would you share the reason to leave?") Please tell us why are you leaving
+         .action-bar
+            .btn.btn-primary.js-response(data-happy="true") YES I Did
+            .btn.btn-secondary.js-response(data-happy="false") NO I didn't
+      .js-yes.hide
+         h1 Great! You are among the happy users.
+         h4 Drop your email/phone to plan your trip
+         input.yes-email.form-control(type="email" placeholder="Your Email/Phone no.")
+         .text-center
+            .btn.btn-primary.js-done Done
+      .js-no.hide
+         h1 Wanna try once more?
+         h4 Drop your email/phone and our travel expert will reach to you.
+         input.no-email.form-control(type="email" placeholder="Your Email/Phone no.")
+         .text-center
+            .btn.btn-primary.js-done Done
+

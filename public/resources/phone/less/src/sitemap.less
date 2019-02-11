@@ -1,0 +1,39 @@
+@import '../variables';
+
+.what-we-do {
+  color: @pallet-color-light;
+  cursor: pointer;
+  text-align: center;
+
+  &.where {
+    background: fade(#43A047, 50%);
+    &.active {
+      background: #43A047;
+    }
+  }
+  &.how {
+    background: fade(#FF7043, 50%);
+    &.active {
+      background: #FF7043;
+    }
+  }
+  &.plan {
+    background: fade(#1976D2, 50%);
+    &.active {
+      background: #1976D2;
+    }
+  }
+  &.card {
+    border: none;
+  }
+}
+
+.link {
+  font-size: @font-large;
+  margin-bottom: @margin-base;
+  display: block;
+}
+
+.img-cont {
+
+}

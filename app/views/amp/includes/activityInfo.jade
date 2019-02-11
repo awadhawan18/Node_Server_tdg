@@ -1,0 +1,40 @@
+.content-wrapper.sm(itemscope itemtype ="http://schema.org/Thing")
+   .col-xs-12
+      .card.details
+         .activity-header
+            .image-block
+               img(itemprop="image" src="#{activity.thumb_url}" data-src="#{activity.image_url}" alt="#{activity.name}")
+         .content
+            .text-center
+               h1.name(itemprop="name") #{activity.name}
+               .subtle ##{activity.type}
+               div
+                  a.share(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=#{pageUrl}" title="Share on Facebook")
+                     mixin paintIcon('share', {fill:'#3A5795'})
+            .section
+               .inline-block
+                  mixin paintIcon('map_marker')
+               .inline-block
+                  h2 #{location.name}
+            .section
+               .caption #{location.state.name ? location.state.name + ', ': ''}#{location.country.name}
+            if showExpense
+               .section
+                  div
+                     strong Expenses:&nbsp;
+                     span !{activity.expense? '&#' +currency +';' + activity.expense: 'NA'}
+                  div
+                     strong Time Needed:&nbsp;
+                     span #{activity.time} hours
+            .section
+               - activity.desc= activity.desc.replace(/\n/g, '<br />' );
+               p.expanded(itemprop="description") !{activity.desc}
+            if result.activity_review && result.activity_review.weekday_text.length
+               .section
+                  h4 Make your visit while its open, note the timings-
+                  each timing in result.activity_review.weekday_text
+                     p.caption #{timing}
+
+   .col-xs-12
+      if activity.video
+         iframe(width="100%" height="315" src="https://www.youtube.com/embed/#{activity.video}" frameborder="0" allowfullscreen)

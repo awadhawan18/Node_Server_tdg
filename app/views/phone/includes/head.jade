@@ -1,0 +1,43 @@
+head(itemscope itemtype="http://schema.org/WebSite")
+
+  mixin metaTitle(seo_data.title)
+
+  meta(name="msvalidate.01" content="B1C6938EF2898E93786DA081C5E4CBDC")
+  meta(name="google-site-verification" content="A_QYFa4H9Is8MjTiD0ES1cAU9h9VK-1pq4MyMXIyHuM")
+  meta(name="p:domain_verify" content="27f7e865b295edbf0a948dce244c60cc")
+  meta(name='B-verify' content='78c38bb3eaf5cdd1e2549e40de641897efc609a2')
+
+  - if(noIndex)
+    meta(name="robots", content="noindex, nofollow, noarchive")
+  - else
+    meta(name="robots", content="index, follow, noarchive")
+  meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+  meta(charset="UTF-8")
+
+  mixin metaDescription(seo_data.description)
+  mixin metaKeywords(seo_data.keywords)
+
+  link(rel="shortcut icon" type='image/x-icon' href="#{static}/resources/images/logo/favicon.ico")
+  if amp
+    link(rel="amphtml" href="#{amp}")
+  link(rel="canonical" href="#{cannonical}" itemprop="url")
+  meta(itemprop="url" content="#{cannonical}")
+
+  meta(http-equiv="x-dns-prefetch-control" content="on")
+  link(rel="dns-prefetch" href="http://www.googletagmanager.com")
+  link(rel="dns-prefetch" href="http://www.google-analytics.com")
+  link(rel="dns-prefetch" href="http://www.res.cloudinary.com")
+  link(rel="dns-prefetch" href="https://c1.staticflickr.com")
+  link(rel="dns-prefetch" href="#{static}")
+
+  mixin metaOG(seo_data, cannonical)
+
+
+  style
+    include ../../../public/resources/phone/css/TDG.m.css
+    //link( href="/resources/phone/css/TDG.m.css" rel="stylesheet" type="text/css")
+  meta(name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+  if ENV == 'prod'
+  script.
+    var dataLayer = []
+  block css

@@ -1,0 +1,139 @@
+if showTrip
+	a.trip-ad(href="#{host}/trip" target="_blank" title="Turn Strangers to friends with social trips")
+		.card.content
+			.text-center Reinvent yourself with the social experience on our upcoming trips
+			.row.text-center
+				.col-sm-4
+					h3
+						mixin paintIcon('relax', {'fill':'#FCFCFC'})
+						.inline-block Have your quiet time
+				.col-sm-4
+					h3
+						mixin paintIcon('newFriends',{'fill':'#FCFCFC'})
+						.inline-block Turn Strangers to Friends
+				.col-sm-4
+					.btn.btn-ghost.lg I'm interested
+
+if home
+	footer.footer.row
+		.content-wrapper
+			h2.col-xs-12.text-center.v-space
+				a.site-link(href="#{host}") Where to go
+			.col-sm-4
+				.social-links.v-space
+					span Connect with us
+					a.social-link(href='https://twitter.com/traveldglobe' title="Tweet to travel d'globe" target='_blank')
+						mixin paintIcon('twitter')
+					a.social-link(href='https://www.facebook.com/traveldglobe' title="Find travel d'globe on Facebook" target='_blank')
+						mixin paintIcon('facebook',{size:{x:24,y:24}})
+					a.social-link(href='https://instagram.com/traveldglobe' title="travel d'globe on Instagram" target='_blank')
+						mixin paintIcon('instagram')
+					a.social-link(href='https://in.pinterest.com/traveldglobe/' title="travel d'globe on Pinterest" target='_blank')
+						mixin paintIcon('pinterest')
+				small.v-space All rights reserved &copy; 2016 travel d'globe
+			.col-sm-4.text-center.hidden-xs
+				small.v-space Get wallpapers, travel stories and next destinations.
+				.subscribe-form
+					form.js-validate-form
+						.input-group
+							input.form-control(type="text" placeholder="myname@gmail.com" name="email" data-validate="empty, email" data-fieldType="email")
+							span.btn.btn-ghost.input-btn.js-getSubscription.js-validate-submit.tr-subscription(type="button") Get them all
+				.text-center
+
+
+			.col-sm-4.text-right
+				div.v-space
+					a.site-link(href="#{host}/about" title="About travel d'globe" target='_blank') About
+					a.site-link(href="#{host}/blog" title="Blog and Stories at travel d'globe" target='_blank') Blog
+					a.site-link(href="#{host}/collections" title="Collections at travel d'globe" target='_blank') Collections
+					a.site-link(href="#{host}/trip" title="Best adventure trips in India" target='_blank') Trips
+					a.site-link(href="#{host}/tour" title="Best outdoor activities in India" target='_blank') Outdoors
+				//	a.site-link(href="/help") Help
+				div.hidden-xs
+					small
+						a.site-link(href="#{host}/search" title="Search the best destination at travel d'globe" target='_blank') Search
+					small
+						a.site-link(href="#{host}/sitemap" title="Sitemap travel d'globe" target='_blank') Sitemap
+					small
+						a.site-link(href="#{host}/team" title="Join team travel d'globe" target='_blank') Team
+					small
+						a.site-link(href="#{host}/explore" title="Explore your own destination" target='_blank') Explore
+				small.v-space By continuing pass this page you accept the terms.
+
+			.col-xs-12.hidden-xs
+				.gateways
+					h5 Weekend Gateways From
+					a.footer-link(target="_blank" href="#{host}/weekend-getaways-from-new-delhi" title="Weekend getaways from New Delhi") New Delhi
+					a.footer-link(target="_blank" href="#{host}/weekend-getaways-from-bangalore" title="Weekend getaways from Bangalore") Bangalore
+					a.footer-link(target="_blank" href="#{host}/weekend-getaways-from-mumbai" title="Weekend getaways from Mumbai") Mumbai
+					a.footer-link(target="_blank" href="#{host}/weekend-getaways-from-kolkata" title="Weekend getaways from Kolkata") Kolkata
+					a.footer-link(target="_blank" href="#{host}/weekend-getaways-from-hyderabad" title="Weekend getaways from Hyderabad") Hyderabad
+					a.footer-link(target="_blank" href="#{host}/weekend-getaways-from-chennai" title="Weekend getaways from Chennai") Chennai
+
+else
+	footer.footer.row
+		.content-wrapper
+			.col-md-3.col-sm-4.hidden-xs
+				h5 Weekend Getaways From Your City
+				a.v-link(target="_blank" href="#{host}/weekend-getaways-from-new-delhi" title="Weekend getaways from New Delhi") Weekend getaways from New Delhi
+				a.v-link(target="_blank" href="#{host}/weekend-getaways-from-bangalore" title="Weekend getaways from Bangalore") Weekend getaways from Bangalore
+				a.v-link(target="_blank" href="#{host}/weekend-getaways-from-mumbai" title="Weekend getaways from Mumbai") Weekend getaways from Mumbai
+				a.v-link(target="_blank" href="#{host}/weekend-getaways-from-kolkata" title="Weekend getaways from Kolkata") Weekend getaways from Kolkata
+				a.v-link(target="_blank" href="#{host}/weekend-getaways" title="Places to visit near New Delhi, Mumbai, Bangalore") More Weekend Destinations
+
+			.col-sm-3.hidden-xs.hidden-sm
+				h5 Top Destinations
+				a.v-link(href="#{host}/destination/kasol" title="Travel to Kasol, Kheerganga and Tosh" target='_blank') Kasol and Kheerganga
+				a.v-link(href="#{host}/destination/mcleod-ganj" title="Travel to Mcleod ganj and Triund" target='_blank') Mcleodganj
+				a.v-link(href="#{host}/destination/lehladakh" title="Places to visit to Leh and Ladakh" target='_blank') Leh and Ladakh
+				a.v-link(href="#{host}/destination/rishikesh" title="Place to visit to Rishikesh" target='_blank') Rishikesh
+				a.v-link(href="#{host}/country/india/himachal-pradesh" title="Top destinations of Himalayas" target='_blank') Himalayan Destinations
+
+			.col-md-3.col-sm-4.col-xs-6
+				h5 Book and travel
+				a.v-link(href="#{host}/trip" title="Travel with strangers and make new friends" target='_blank') Crafted Trips
+				a.v-link(href="#{host}/tour" title="Crafted outdoor adventure activities" target='_blank') Adventure Outdoors
+				a.v-link(href="#{host}/places" title="Remote & Unexplored places" target='_blank') Remote & Unexplored places
+				a.v-link(href="#{host}/route/from--new-delhi/to--kasol" title="How to reach from New Delhi to Kasol" target='_blank') Delhi to Kasol
+
+			.col-md-3.col-sm-4.col-xs-6
+				h5 Explore travel d'globe
+				div
+					a.v-link(href="#{host}/about" title="About travel d'globe" target='_blank') About travel d'globe
+					a.v-link(href="#{host}/blog" title="Blog and Stories at travel d'globe" target='_blank') Blog and Stories
+					a.v-link(href="#{host}/collections" title="Collections at travel d'globe" target='_blank') Collections
+					a.v-link(href="#{host}/team" title="Join team travel d'globe" target='_blank') travel d'globe Team
+					a.v-link(href="#{host}/explore" title="Find destination with your interest" target='_blank') Explore Destinations
+				//	a.site-link(href="/help") Help
+
+			.col-xs-12.text-center
+				.social-links.v-space
+					div Connect with us
+					a.social-link(href='https://twitter.com/traveldglobe' title="Tweet to travel d'globe" target='_blank')
+						mixin paintIcon('twitter')
+					a.social-link(href='https://www.facebook.com/traveldglobe' title="Find travel d'globe on Facebook" target='_blank')
+						mixin paintIcon('facebook',{size:{x:24,y:24}})
+					a.social-link(href='https://instagram.com/traveldglobe' title="travel d'globe on Instagram" target='_blank')
+						mixin paintIcon('instagram')
+					a.social-link(href='https://in.pinterest.com/traveldglobe/' title="travel d'globe on Pinterest" target='_blank')
+						mixin paintIcon('pinterest')
+				h2.col-xs-12.text-center
+					a.site-link(href="#{host}") Where to go
+				div.hidden-xs
+					small
+						a.site-link(href="#{host}/search" title="Search the best destination at travel d'globe" target='_blank') Search
+					small
+						a.site-link(href="#{host}/sitemap" title="Sitemap travel d'globe" target='_blank') Sitemap
+					small
+						a.site-link(href="#{host}/terms" title="Terms of using travel d'globe" target='_blank') Terms
+					small
+						a.site-link(href="#{host}/contact" title="Contact team travel d'globe" target='_blank') Contact
+					small
+						a.site-link(href="#{host}/why-choose-traveldglobe" title="Why Choose travel d'globe" target='_blank') Why traveldglobe
+					small
+						a.site-link(href="#{host}/contributors" title="Contributors at travel d'globe" target='_blank') Contributors
+					small
+						a.site-link(href="#{host}/globe" title="The travel of globe" target='_blank') Globe
+
+				small.v-space All rights reserved &copy; 2017 travel d'globe. At traveldglobe, know where to go? What to do there? How to go there? Just book and enjoy your trip.
+

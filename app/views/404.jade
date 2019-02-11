@@ -1,0 +1,67 @@
+extends layouts/default
+append vars
+  - dtLyr.pageType = '404 error'
+  - var hideHeader = true
+  - var hideFooter = true
+  - var errCode = '404'
+
+block mainContent
+  .container.text-center
+    a.home-icon(href='/', style='margin-top:20px;display:inline-block;')
+      img(src="/resources/images/logo/tdg_red.svg" alt="travel d'globe")
+    h1.error-code 404
+
+    //if(result && result.search_result.length)
+    //  h3 #{result.message}
+    //  .row
+    //    each item in result.search_result
+    //      .col-sm-4
+    //        a(href="#{host}#{item.url}" style="display:inline-block; margin-bottom:20px;")
+    //          div
+    //            img(src="#{item.image_url}" alt="#{item.location}" style="width:100%; border-radius:15px;")
+    //          div #{item.name}, #{item.location? item.location: item.country}
+
+    h3 There are more exciting places that here, just pick one from them
+    .row
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/srinagar" title="Srinagar") Srinagar
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/sanchi" title="Sanchi") Sanchi
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/khajuraho" title="Khajuraho") Khajuraho
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/hampi" title="Hampi") Hampi
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/gangtok" title="Gangtok") Gangtok
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/munnar" title="Munnar") Munnar
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/jodhpur" title="Jodhpur") Jodhpur
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/manali" title="Manali") Manali
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/kasol" title="Kasol") Kasol
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/udaipur" title="Udaipur") Udaipur
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/konark" title="Konark") Konark
+      .col-sm-4
+        a(href="http://www.traveldglobe.com/destination/lehladakh" title="Leh/Ladakh") Leh/Ladakh
+    div
+      img(src="https://media.giphy.com/media/8L0lBWqd1JC3C/giphy.gif")
+    h4 Travel with your interests
+    .row
+      .col-sm-4
+        a(href="#{host + '/travel-interests/adventure'}" title="Places to visit for adventure") Places to visit for adventure
+      .col-sm-4
+        a(href="#{host + '/travel-interests/spiritual'}" title="Places to visit for spirituality") Places to visit for spirituality
+      .col-sm-4
+        a(href="#{host + '/travel-interests/wildlife'}" title="Places to visit for wildlife") Places to visit for wildlife
+      .col-sm-4
+        a(href="#{host + '/travel-interests/nature'}" title="Places to visit for nature lovers") Places to visit for nature lovers
+      .col-sm-4
+        a(href="#{host + '/travel-interests/romantic'}" title="Romantic places to visit") Romantic places to visit
+      .col-sm-4
+        a(href="#{host + '/travel-interests/culture'}" title="Cultural places to visit") Cultural places to visit
+      .col-sm-4
+        a(href="#{host + '/travel-interests/leisure'}" title="Relaxing places to visit") Relaxing places to visit

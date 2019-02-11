@@ -1,0 +1,61 @@
+//
+   Created by abhishekjain on 20/05/17.
+
+mixin mobileQuery(slug, heading)
+    block
+    section.card.content
+        .detail-section
+            h3.detail-heading #{heading}
+            .inside-section
+                form.js-validate-form.booking-form
+                    input(type="hidden" name="travellers" value="1")
+                    input(type="hidden" name="slug" value="#{slug}" )
+                    input(type="hidden" name="budget" value="0")
+                    .form-item
+                        label(style="width:100%") Mobile
+                            input.form-control(type="text" placeholder="10 digits to hear from us" name="mobile" data-validate="phone" data-fieldType="phone")
+                    .form-item
+                        label(style="width:100%") Query
+                            textarea.form-control(name="comment" placeholder="Please write your query")
+                    .text-center.form-item
+                        button.btn.btn-secondary.js-getQuote.js-validate-submit Send Enquiry
+mixin emailQuery(slug, heading)
+    block
+    section.card.content
+        .detail-section
+            h3.detail-heading #{heading}
+            .inside-section
+                form.js-validate-form.booking-form
+                    input(type="hidden" name="travellers" value="1")
+                    input(type="hidden" name="slug" value="#{slug}" )
+                    input(type="hidden" name="budget" value="0")
+                    .form-item
+                        label(style="width:100%") Email
+                            span.mandatory *
+                            input.form-control(type="text" placeholder="myname@gmail.com" name="email" data-validate="empty, email" data-fieldtype="email")
+                    .form-item
+                        label(style="width:100%") Query
+                            textarea.form-control(name="comment" placeholder="Please write your query")
+                    .text-center.form-item
+                        button.btn.btn-secondary.js-getQuote.js-validate-submit Send Enquiry
+mixin nameQuery(slug, heading)
+    block
+    section.card.content
+        .detail-section
+            h3.detail-heading #{heading}
+            .inside-section
+                form.js-validate-form.booking-form
+                    input(type="hidden" name="travellers" value="1")
+                    input(type="hidden" name="slug" value="#{slug}" )
+                    input(type="hidden" name="budget" value="0")
+                    .form-item
+                        label(style="width:100%") Name
+                            input.form-control(type="text" placeholder="Your name" name="username" data-validate="empty" data-fieldType="name")
+                    .form-item
+                        label(style="width:100%") Mobile
+                            input.form-control(type="text" placeholder="10 digits to hear from us" name="mobile" data-validate="phone" data-fieldType="phone")
+                    .form-item
+                        label(style="width:100%") Query
+                            textarea.form-control(name="comment" placeholder="Please write your query")
+                    .text-center.form-item
+                        button.btn.btn-secondary.js-getQuote.js-validate-submit Send Enquiry

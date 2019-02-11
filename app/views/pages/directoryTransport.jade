@@ -1,0 +1,143 @@
+
+extends ../layouts/default
+
+append vars
+   - dtLyr.pageType = req.app.get('pageConstants').TRANSPORT_DIRECTORY.identifier
+block mainContent
+   style.
+      .table-row *  {
+         padding-top: 15px;
+         padding-bottom: 15px;
+         text-align: center;
+         border-bottom: 1px solid #dbdbdb;
+      }
+      .table-row.table-header {
+         font-weight: bold;
+      }
+      .list-form {
+         margin: 15px 0;
+      }
+      .list-form label {
+         width: 100%;
+      }
+      .list-form .form-item {
+         margin-bottom: 10px;
+      }
+
+   .content-wrapper
+      .text-center
+         a.btn.btn-secondary(href="#listForm") List your transport
+      h1 Directory of the transport dealers
+      .row.table-header.table-row
+         .col-xs-3 Name
+         .col-xs-3 Available transports
+         .col-xs-2 Contact
+         .col-xs-2 Location
+         .col-xs-2 Rating
+      .row.table-row
+         .col-xs-3 Shreyansh Travels
+         .col-xs-3 Tempo travellers(12, 13 seats), Innova
+         .col-xs-2 +91-981-xxx-xxxx
+         .col-xs-2 New Delhi
+         .col-xs-2 -
+      .row.table-row
+         .col-xs-3 Make Travel Day
+         .col-xs-3 Buses(28, 40 seats), Indigo, Dezire, Innova
+         .col-xs-2 +91-970-488-5191
+         .col-xs-2 Hyderabad
+         .col-xs-2 -
+      .row.table-row
+         .col-xs-3 Rajasthan Taxi Booking
+         .col-xs-3 Buses(16, 21, 35 seats), Indigo, Dezire, Innova, Tavera, Tempo(12 seats)
+         .col-xs-2 +91-921-441-7735
+         .col-xs-2 Ajmer
+         .col-xs-2 -
+      .row.table-row
+         .col-xs-3 Unseen India
+         .col-xs-3 Indigo, Etios, Dezire, Innova, Tavera, Tempo(12 seats)
+         .col-xs-2 +91-992-994-4447
+         .col-xs-2 Rajasthan
+         .col-xs-2 -
+
+   .content-wrapper.sm
+      form.js-validate-form.row.card.list-form(id="listForm")
+         .col-sm-12.form-item
+            label Email
+               input.form-control(type="text" placeholder="myname@gmail.com" name="email" data-validate="empty, email" data-fieldtype="email")
+         .col-sm-12.form-item
+            label Name
+               input.form-control(type="text" placeholder="Name goes here" name="username")
+         .col-sm-12.form-item
+            label Mobile
+               input.form-control(type="text" placeholder="10 digits to hear from us" name="phone" data-validate="phone" data-fieldType="phone")
+         .col-sm-12.form-item
+            label Location
+               input.form-control(type="text" placeholder="Where are you based upon" name="location")
+         .col-sm-12.form-item
+            label Available Transports
+               textarea.form-control(name="transports")
+         .text-center.form-item
+            button.btn.btn-primary.js-submit.js-validate-submit Add to the directory
+
+
+      div(id="fb-root")
+block js
+   script.
+         (function(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) return;
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1151322284897579";
+         fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+
+         (function(){
+            var el= { formBtn: '.js-submit' }, transporter = {};
+            var successCallBack = function(response){
+               $('<div>'+response.message+'</div>');
+               }
+               var addDirectory= function (event){
+                  event.preventDefault();
+                  event.stopPropagation();
+
+                  var $btn_ref= $(this), email_ref;
+
+                  el.$form = $btn_ref.parents('form');
+
+                  email_ref= $(el.$form.find('[name="email"]'))
+
+                  transporter.name= $(el.$form.find('[name="username"]')).val();
+                  transporter.phone= $(el.$form.find('[name="phone"]')).val();
+                  transporter.location= $(el.$form.find('[name="location"]')).val();
+                  transporter.transport= $(el.$form.find('[name="transport"]')).val();
+
+                  if (email_ref && email_ref.val()) {
+                     transporter.email = email_ref.val();
+                  }
+                  if (!$btn_ref.hasClass('disabled')) {
+                     $btn_ref.addClass('disabled');
+                     console.log(transporter);
+               //    runAjax(transporter, 'POST', sucessCallback);
+                  }
+               };
+
+            /*var runAjax = function (transporter, method, callback) {
+              $.ajax({
+                url: TDG.urls.BOOK_TRIP,
+                method: method,
+                data: transporter,
+                success: function (response) {
+                  callback(response);
+                },
+                error: function (err) {
+                  $('<div> Something is wrong </div>').insertAfter(el.$form);
+                }
+              });
+            }*/
+            $(el.formBtn).click(addDirectory);
+         })();
+
+
+
+
+
